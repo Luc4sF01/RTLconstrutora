@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Lenis from 'lenis';
@@ -9,10 +9,12 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import CustomCursor from './components/CustomCursor';
+import LoadingScreen from './components/LoadingScreen';
 
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
 import PortfolioPage from './pages/PortfolioPage';
+import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import NotFound from './pages/NotFound';
 
@@ -52,6 +54,7 @@ function AnimatedRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<AboutPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/servicos" element={<ServicesPage />} />
           <Route path="/contato" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -94,9 +97,12 @@ function AppContent() {
 }
 
 export default function App() {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <BrowserRouter>
-      <AppContent />
+      {!loaded && <LoadingScreen onComplete={() => setLoaded(true)} />}
+      {loaded && <AppContent />}
     </BrowserRouter>
   );
 }

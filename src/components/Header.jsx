@@ -6,7 +6,7 @@ const NAV_LINKS = [
   { label: 'Início', to: '/' },
   { label: 'Sobre', to: '/sobre' },
   { label: 'Portfólio', to: '/portfolio' },
-  { label: 'Serviços', to: '/#servicos' },
+  { label: 'Serviços', to: '/servicos' },
   { label: 'Contato', to: '/contato' },
 ];
 
@@ -17,8 +17,8 @@ export default function Header() {
   const location = useLocation();
 
   useEffect(() => {
-    // Hero is light on Home, dark otherwise
-    setHeroLight(location.pathname === '/');
+    // Hero is dark on Home (new dark hero), light on other pages
+    setHeroLight(location.pathname !== '/');
   }, [location.pathname]);
 
   useEffect(() => {

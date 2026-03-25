@@ -1,159 +1,229 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { STATS, COMPANY, IMAGES } from '../data/content';
+import { CheckCircle2 } from 'lucide-react';
+import { COMPANY, IMAGES } from '../data/content';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function StatBox({ stat, index }) {
-  const numRef = useRef(null);
-  const boxRef = useRef(null);
+// ─── RTL Brand Animation ─────────────────────────────────────────────────────
+function RTLBrand() {
+  const brandRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(boxRef.current,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: { trigger: boxRef.current, start: 'top 88%' },
-          delay: index * 0.08,
-        }
-      );
-      const counter = { val: 0 };
-      gsap.to(counter, {
-        val: stat.value,
-        duration: 2,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: boxRef.current, start: 'top 88%' },
-        onUpdate: () => { if (numRef.current) numRef.current.textContent = Math.round(counter.val); },
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: brandRef.current,
+          start: 'top 75%',
+          once: true,
+        },
       });
-    });
+
+      tl.fromTo('.brand-bar',
+        { scaleY: 0, transformOrigin: 'bottom center' },
+        { scaleY: 1, duration: 0.5, stagger: 0.07, ease: 'power2.out' },
+        0
+      )
+      .fromTo('.brand-letter',
+        { yPercent: 110 },
+        { yPercent: 0, duration: 0.75, stagger: 0.1, ease: 'power3.out' },
+        0.2
+      )
+      .fromTo('.brand-sub',
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+        0.7
+      )
+      .fromTo('.brand-line',
+        { scaleX: 0, transformOrigin: 'center' },
+        { scaleX: 1, duration: 0.7, ease: 'power3.out' },
+        0.65
+      )
+      .fromTo('.brand-tagline',
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.5 },
+        0.9
+      );
+    }, brandRef);
     return () => ctx.revert();
   }, []);
 
+  const bars = [22, 40, 66, 100, 88, 58, 38, 24, 14];
+
   return (
-    <div ref={boxRef} className="p-5 opacity-0" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)' }}>
-      <div className="font-cormorant font-light leading-none mb-1" style={{ fontSize: '48px', color: '#0A0A0A' }}>
-        {stat.prefix}<span ref={numRef}>0</span><span style={{ fontSize: '24px' }}>{stat.suffix}</span>
+    <div
+      ref={brandRef}
+      style={{
+        background: '#0A0A0A',
+        padding: 'clamp(72px,9vh,110px) clamp(24px,6vw,80px)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        position: 'relative',
+      }}
+    >
+      {/* Glow */}
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '55%', height: '70%', background: 'radial-gradient(ellipse, rgba(204,85,0,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+      {/* Skyline */}
+      <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, marginBottom: 40, height: 90 }}>
+        {bars.map((h, i) => (
+          <div
+            key={i}
+            className="brand-bar"
+            style={{
+              width: i === 3 ? 14 : i === 2 || i === 4 ? 10 : 6,
+              height: h,
+              background: i === 3 ? '#cc5500' : i === 2 || i === 4 ? 'rgba(204,85,0,0.38)' : 'rgba(255,255,255,0.07)',
+              transform: 'scaleY(0)',
+            }}
+          />
+        ))}
       </div>
-      <p className="font-dm font-light text-xs" style={{ color: 'rgba(10,10,10,0.45)' }}>{stat.label}</p>
+
+      {/* RTL */}
+      <div style={{ display: 'flex', overflow: 'hidden', marginBottom: 10 }}>
+        {'RTL'.split('').map((l, i) => (
+          <div key={i} style={{ overflow: 'hidden' }}>
+            <span
+              className="brand-letter"
+              style={{
+                display: 'block',
+                fontFamily: 'Cormorant Garamond, serif',
+                fontSize: 'clamp(88px, 15vw, 190px)',
+                fontWeight: 300,
+                color: '#fff',
+                lineHeight: 0.88,
+                letterSpacing: '-0.03em',
+              }}
+            >
+              {l}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Divider */}
+      <div
+        className="brand-line"
+        style={{ width: '100%', maxWidth: 480, height: 1, background: 'linear-gradient(to right, transparent, rgba(204,85,0,0.55), transparent)', marginBottom: 18 }}
+      />
+
+      {/* Sub */}
+      <p
+        className="brand-sub"
+        style={{ fontFamily: 'Cormorant SC, serif', fontSize: 'clamp(10px, 1.1vw, 13px)', letterSpacing: '0.42em', color: 'rgba(255,255,255,0.32)', textAlign: 'center', opacity: 0 }}
+      >
+        CONSTRUÇÃO DE EDIFÍCIOS
+      </p>
+
+      {/* Tagline */}
+      <p
+        className="brand-tagline"
+        style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.4vw, 17px)', fontStyle: 'italic', color: 'rgba(204,85,0,0.65)', textAlign: 'center', marginTop: 10, fontWeight: 300, opacity: 0 }}
+      >
+        "Construir com excelência, entregar com confiança."
+      </p>
+
+      {/* City */}
+      <div style={{ marginTop: 26, display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{ width: 18, height: 1, background: 'rgba(204,85,0,0.35)' }} />
+        <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 9, letterSpacing: '0.32em', color: 'rgba(255,255,255,0.18)', textTransform: 'uppercase' }}>
+          São José do Rio Preto — SP
+        </span>
+        <div style={{ width: 18, height: 1, background: 'rgba(204,85,0,0.35)' }} />
+      </div>
     </div>
   );
 }
 
+// ─── Main About ──────────────────────────────────────────────────────────────
 export default function About() {
   const leftRef = useRef(null);
   const imgRef = useRef(null);
-  const accentRef = useRef(null);
+  const imgWrapRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(leftRef.current,
-        { opacity: 0, x: -40 },
-        { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
-          scrollTrigger: { trigger: leftRef.current, start: 'top 80%' } }
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: leftRef.current, start: 'top 80%' } }
       );
-      gsap.fromTo(imgRef.current,
-        { clipPath: 'inset(100% 0 0 0)', opacity: 1 },
-        { clipPath: 'inset(0% 0 0 0)', duration: 1.1, ease: 'power3.inOut',
-          scrollTrigger: { trigger: imgRef.current, start: 'top 85%' } }
+      gsap.fromTo(imgWrapRef.current,
+        { clipPath: 'inset(100% 0 0 0)' },
+        { clipPath: 'inset(0% 0 0 0)', duration: 1.1, ease: 'power3.inOut', scrollTrigger: { trigger: imgWrapRef.current, start: 'top 85%' } }
       );
-      gsap.fromTo(accentRef.current,
-        { opacity: 0, scale: 0 },
-        { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)',
-          scrollTrigger: { trigger: imgRef.current, start: 'top 80%' }, delay: 0.5 }
-      );
-      // Parallax on image
-      gsap.to(imgRef.current?.querySelector('.parallax-img'), {
-        yPercent: 15,
+      gsap.to(imgRef.current, {
+        yPercent: 12,
         ease: 'none',
-        scrollTrigger: {
-          trigger: imgRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
+        scrollTrigger: { trigger: imgWrapRef.current, start: 'top bottom', end: 'bottom top', scrub: true },
       });
     });
     return () => ctx.revert();
   }, []);
 
+  const points = [
+    'Habilitada para licitações municipais, estaduais e federais',
+    'Engenheiros CREA com ART emitida em cada obra',
+    'Tecnologia BIM e gestão técnica avançada',
+    'NR-18, PCMAT e documentação completa ao contratante',
+  ];
+
   return (
-    <section id="sobre" style={{ padding: '140px 0', background: '#FAFAF8', overflow: 'hidden' }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+    <section id="sobre" style={{ background: '#FAFAF8', overflow: 'hidden' }}>
 
-          {/* Left - text */}
-          <div ref={leftRef} className="opacity-0 lg:pt-10">
-            <p className="font-cormorantSC text-[11px] tracking-[0.3em] mb-5" style={{ color: '#cc5500' }}>
-              SOBRE A RTL
-            </p>
-            <h2
-              className="font-cormorant font-light leading-tight mb-6"
-              style={{ fontSize: 'clamp(38px, 4.5vw, 56px)', color: '#0A0A0A', letterSpacing: '-0.01em' }}
-            >
-              Construindo com<br />propósito desde<br />{COMPANY.founded.split(' ').pop()}
+      {/* RTL Brand Animation */}
+      <RTLBrand />
+
+      {/* Content */}
+      <div className="max-w-7xl mx-auto" style={{ padding: '90px clamp(24px,6vw,80px)' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+
+          {/* Left */}
+          <div ref={leftRef} style={{ opacity: 0 }}>
+            <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 10, letterSpacing: '0.38em', color: '#cc5500', marginBottom: 18 }}>SOBRE A RTL</p>
+            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(32px, 3.8vw, 50px)', fontWeight: 300, color: '#0A0A0A', lineHeight: 1.1, letterSpacing: '-0.01em', marginBottom: 18 }}>
+              Obras públicas e privadas<br />com{' '}
+              <em style={{ color: '#cc5500', fontStyle: 'italic' }}>excelência técnica</em>
             </h2>
-            <div className="mb-7" style={{ width: '60px', height: '2px', background: '#cc5500' }} />
-
-            <p className="font-dm font-light text-base leading-relaxed mb-5" style={{ color: 'rgba(10,10,10,0.55)', fontSize: '15px' }}>
-              A RTL Construção de Edifícios nasceu em {COMPANY.founded} com uma missão clara:
-              entregar obras com excelência técnica, dentro do prazo e com total transparência.
-              Atuamos em construção civil, obras industriais, reformas e incorporação imobiliária
-              na região de São José do Rio Preto - SP.
+            <div style={{ width: 44, height: 2, background: '#cc5500', marginBottom: 24 }} />
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'rgba(10,10,10,0.55)', fontWeight: 300, lineHeight: 1.7, marginBottom: 28, maxWidth: 420 }}>
+              Da licitação pública ao residencial de alto padrão, a RTL executa obras
+              com rigor técnico, documentação completa e transparência total — do contrato
+              à entrega das chaves.
             </p>
-            <p className="font-dm font-light text-base leading-relaxed mb-8" style={{ color: 'rgba(10,10,10,0.55)', fontSize: '15px' }}>
-              Do projeto à entrega, nossa equipe de engenheiros e mestres de obra certificados
-              garante padrão de qualidade e segurança em cada fase da construção.
-            </p>
-
-            <p className="font-cormorant italic mb-4" style={{ fontSize: '22px', color: '#cc5500', fontWeight: 400 }}>
-              "Construir com excelência, entregar com confiança"
-            </p>
-            <p className="font-dm font-light text-xs" style={{ color: 'rgba(10,10,10,0.25)' }}>
-              CNPJ: {COMPANY.cnpj}
-            </p>
-          </div>
-
-          {/* Right — photo with overlapping stats */}
-          <div className="relative">
-            {/* Accent square top-right */}
-            <div
-              ref={accentRef}
-              className="absolute -top-5 -right-5 w-16 h-16 z-10 hidden lg:block"
-              style={{ background: '#cc5500', opacity: 0 }}
-            />
-
-            {/* Main image */}
-            <div
-              ref={imgRef}
-              className="relative overflow-hidden"
-              style={{ aspectRatio: '3/4', clipPath: 'inset(100% 0 0 0)' }}
-            >
-              <img
-                className="parallax-img w-full h-full object-cover scale-110"
-                src={IMAGES.about}
-                alt="RTL Construção - Obras"
-                loading="lazy"
-              />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.3))' }} />
-            </div>
-
-            {/* Stats overlapping bottom of image */}
-            <div
-              className="absolute bottom-0 left-0 right-0 grid grid-cols-2 gap-px"
-              style={{ background: 'rgba(10,10,10,0.06)' }}
-            >
-              {STATS.map((stat, i) => (
-                <StatBox key={stat.label} stat={stat} index={i} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
+              {points.map((pt, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                  <CheckCircle2 size={15} style={{ color: '#cc5500', flexShrink: 0, marginTop: 3 }} />
+                  <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, color: 'rgba(10,10,10,0.6)', fontWeight: 300, lineHeight: 1.5 }}>{pt}</span>
+                </div>
               ))}
             </div>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, color: 'rgba(10,10,10,0.2)', marginTop: 30, letterSpacing: '0.04em' }}>CNPJ {COMPANY.cnpj}</p>
+          </div>
 
-            {/* Small accent dot bottom-left */}
-            <div
-              className="absolute -bottom-3 -left-3 w-6 h-6 hidden lg:block"
-              style={{ background: '#0A0A0A' }}
-            />
+          {/* Right – foto */}
+          <div style={{ position: 'relative' }}>
+            <div className="hidden lg:block" style={{ position: 'absolute', top: -16, right: -16, width: 52, height: 52, background: '#cc5500', zIndex: 2 }} />
+            <div ref={imgWrapRef} style={{ overflow: 'hidden', aspectRatio: '3/4', clipPath: 'inset(100% 0 0 0)', position: 'relative' }}>
+              <img
+                ref={imgRef}
+                src={IMAGES.about}
+                alt="RTL Construção"
+                style={{ width: '100%', height: '115%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+                loading="lazy"
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 55%, rgba(10,10,10,0.4))' }} />
+              <div style={{ position: 'absolute', bottom: 24, left: 24, background: 'rgba(10,10,10,0.88)', backdropFilter: 'blur(8px)', padding: '12px 20px', borderLeft: '2px solid #cc5500' }}>
+                <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 26, color: '#fff', fontWeight: 300, lineHeight: 1 }}>{COMPANY.founded.split(' ').pop()}</p>
+                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 9, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.18em', marginTop: 4 }}>FUNDAÇÃO</p>
+              </div>
+            </div>
+            <div className="hidden lg:block" style={{ position: 'absolute', bottom: -12, left: -12, width: 18, height: 18, background: '#0A0A0A' }} />
           </div>
 
         </div>

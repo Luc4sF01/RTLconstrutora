@@ -2,44 +2,46 @@ import { Suspense, lazy, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { RotateCcw, Layers, Cpu } from 'lucide-react';
 import { IMAGES } from '../data/content';
 
 const BuildingModel = lazy(() => import('../components/3d/BuildingModel'));
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Spinner() {
-  return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-      <div
-        className="w-12 h-12 rounded-full border-2 animate-spin"
-        style={{ borderColor: 'rgba(204,85,0,0.15)', borderTopColor: '#cc5500' }}
-      />
-      <span className="font-cormorantSC text-[10px] tracking-[0.3em]" style={{ color: 'rgba(255,255,255,0.3)' }}>
-        CARREGANDO MODELO
-      </span>
-    </div>
-  );
-}
-
 export default function Building3D() {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const sectionRef = useRef(null);
-  const textRef = useRef(null);
-  const canvasRef = useRef(null);
+  const labelRef = useRef(null);
+  const hintRef = useRef(null);
+  const overlayRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(textRef.current,
-        { opacity: 0, x: -50 },
-        { opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 65%' } }
+      // Label aparece
+      gsap.fromTo(labelRef.current,
+        { opacity: 0, y: -10 },
+        {
+          opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 70%' },
+        }
       );
-      gsap.fromTo(canvasRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 1.2, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 65%' }, delay: 0.3 }
+      // Overlay sai (revela o canvas)
+      gsap.fromTo(overlayRef.current,
+        { opacity: 1 },
+        {
+          opacity: 0, duration: 1.2, ease: 'power2.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 60%' },
+          delay: 0.4,
+        }
+      );
+      // Hint aparece
+      gsap.fromTo(hintRef.current,
+        { opacity: 0, y: 8 },
+        {
+          opacity: 1, y: 0, duration: 0.6,
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 65%' },
+          delay: 1.0,
+        }
       );
     });
     return () => ctx.revert();
@@ -49,86 +51,130 @@ export default function Building3D() {
     <section
       ref={sectionRef}
       id="section-3d"
-      style={{ background: '#0A0A0A', minHeight: '100vh', overflow: 'hidden', position: 'relative' }}
+      style={{
+        background: '#0A0A0A',
+        height: '100vh',
+        minHeight: 600,
+        overflow: 'hidden',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
     >
-      {/* Full layout */}
-      <div className="flex flex-col lg:flex-row min-h-screen">
+      {/* Label topo */}
+      <div
+        ref={labelRef}
+        style={{
+          position: 'absolute',
+          top: 32,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 10,
+          opacity: 0,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 12,
+          pointerEvents: 'none',
+        }}
+      >
+        <div style={{ width: 16, height: 1, background: '#cc5500' }} />
+        <span style={{
+          fontFamily: 'Cormorant SC, serif',
+          fontSize: 9,
+          letterSpacing: '0.42em',
+          color: 'rgba(255,255,255,0.4)',
+          whiteSpace: 'nowrap',
+        }}>
+          MODELO 3D INTERATIVO
+        </span>
+        <div style={{ width: 16, height: 1, background: '#cc5500' }} />
+      </div>
 
-        {/* Left text panel - 30% */}
-        <div
-          ref={textRef}
-          className="opacity-0 flex flex-col justify-center w-full lg:w-[30%] px-8 lg:px-14 py-20 lg:py-0 flex-shrink-0 z-10"
-          style={{ borderRight: '1px solid rgba(255,255,255,0.05)' }}
-        >
-          <p className="font-cormorantSC text-[11px] tracking-[0.3em] mb-5" style={{ color: '#cc5500' }}>
-            TECNOLOGIA & VISÃO
-          </p>
-          <h2
-            className="font-cormorant font-light text-white leading-tight mb-5"
-            style={{ fontSize: 'clamp(32px, 3.5vw, 52px)', letterSpacing: '-0.01em' }}
+      {/* Overlay escuro que some ao revelar o canvas */}
+      <div
+        ref={overlayRef}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: '#0A0A0A',
+          zIndex: 5,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Canvas ocupa 100% */}
+      <div style={{ flex: 1, position: 'relative' }}>
+        {isMobile ? (
+          /* Mobile: imagem estática */
+          <div style={{ width: '100%', height: '100%', position: 'relative', minHeight: 400 }}>
+            <img
+              src={IMAGES.heroBg}
+              alt="RTL – Modelo 3D"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3, display: 'block' }}
+              loading="lazy"
+            />
+            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+              <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 28, color: '#fff', fontWeight: 300, letterSpacing: '-0.02em' }}>
+                Modelo 3D
+              </span>
+              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>
+                Disponível na versão desktop
+              </span>
+            </div>
+          </div>
+        ) : (
+          <Suspense
+            fallback={
+              <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, background: '#0A0A0A' }}>
+                <div style={{ width: 40, height: 40, borderRadius: '50%', border: '1px solid rgba(204,85,0,0.2)', borderTopColor: '#cc5500', animation: 'spin 1s linear infinite' }} />
+                <span style={{ fontFamily: 'Cormorant SC, serif', fontSize: 9, letterSpacing: '0.35em', color: 'rgba(255,255,255,0.2)' }}>CARREGANDO</span>
+              </div>
+            }
           >
-            Cada detalhe<br />
-            <em style={{ color: '#cc5500', fontStyle: 'italic' }}>planejado.</em>
-          </h2>
-          <div className="w-10 h-px mb-6" style={{ background: '#cc5500' }} />
-          <p className="font-dm font-light leading-relaxed mb-10" style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)' }}>
-            Utilizamos tecnologia BIM e modelagem 3D para planejar cada empreendimento
-            com precisão milimétrica antes do primeiro tijolo ser assentado.
-            Explore o modelo interativo ao lado.
-          </p>
+            <BuildingModel />
+          </Suspense>
+        )}
+      </div>
 
-          {/* Tech features */}
-          <div className="space-y-4">
+      {/* Hint de interação (rodapé centralizado) */}
+      {!isMobile && (
+        <div
+          ref={hintRef}
+          style={{
+            position: 'absolute',
+            bottom: 28,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 10,
+            opacity: 0,
+            pointerEvents: 'none',
+          }}
+        >
+          <div style={{
+            display: 'flex',
+            gap: 28,
+            alignItems: 'center',
+            background: 'rgba(10,10,10,0.75)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255,255,255,0.07)',
+            padding: '9px 22px',
+          }}>
             {[
-              { icon: Layers, label: 'Modelagem BIM', desc: 'Projeto completo em 3D' },
-              { icon: RotateCcw, label: 'Visualização 360°', desc: 'Explore antes de construir' },
-              { icon: Cpu, label: 'Precisão Técnica', desc: 'Detalhamento milimétrico' },
-            ].map(({ icon: Icon, label, desc }) => (
-              <div
-                key={label}
-                className="flex items-center gap-4 p-3"
-                style={{ border: '1px solid rgba(255,255,255,0.06)', borderRadius: '2px' }}
-              >
-                <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 rounded-sm" style={{ background: 'rgba(204,85,0,0.1)' }}>
-                  <Icon size={14} style={{ color: '#cc5500' }} />
-                </div>
-                <div>
-                  <p className="font-dm font-medium text-sm text-white">{label}</p>
-                  <p className="font-dm font-light text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>{desc}</p>
-                </div>
+              { icon: '⟳', label: 'Arrastar para girar' },
+              { icon: '⊕', label: 'Scroll para zoom' },
+            ].map(({ icon, label }) => (
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 16, color: '#cc5500', lineHeight: 1 }}>{icon}</span>
+                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.06em' }}>{label}</span>
               </div>
             ))}
           </div>
-
-          {/* Hint */}
-          <div className="flex items-center gap-2 mt-8">
-            <RotateCcw size={11} style={{ color: 'rgba(255,255,255,0.2)' }} />
-            <span className="font-dm font-light text-[11px]" style={{ color: 'rgba(255,255,255,0.2)' }}>
-              Arraste o modelo para explorar
-            </span>
-          </div>
         </div>
+      )}
 
-        {/* Right canvas - 70% */}
-        <div
-          ref={canvasRef}
-          className="opacity-0 flex-1 relative"
-          style={{ minHeight: isMobile ? '70vw' : '100vh' }}
-        >
-          {isMobile ? (
-            <img
-              src={IMAGES.heroBg}
-              alt="Modelo 3D RTL"
-              className="w-full h-full object-cover"
-              style={{ opacity: 0.4, minHeight: '300px' }}
-              loading="lazy"
-            />
-          ) : (
-            <Suspense fallback={<Spinner />}>
-              <BuildingModel />
-            </Suspense>
-          )}
-        </div>
+      {/* Marca RTL canto inferior direito */}
+      <div style={{ position: 'absolute', bottom: 28, right: 32, zIndex: 10, pointerEvents: 'none' }}>
+        <span style={{ fontFamily: 'Cormorant SC, serif', fontSize: 10, letterSpacing: '0.3em', color: 'rgba(255,255,255,0.1)' }}>RTL</span>
       </div>
     </section>
   );

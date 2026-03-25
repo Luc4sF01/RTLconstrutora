@@ -4,26 +4,17 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
 import { IMAGES, STATS } from '../data/content';
+import HeroCanvas from '../components/HeroCanvas';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const sectionRef = useRef(null);
   const imgRef = useRef(null);
-  const labelRef = useRef(null);
-  const title1Ref = useRef(null);
-  const title2Ref = useRef(null);
-  const lineRef = useRef(null);
-  const subRef = useRef(null);
-  const ctaRef = useRef(null);
-  const statsRef = useRef(null);
-  const imgBoxRef = useRef(null);
-  const marqueeRef = useRef(null);
-  const accentBoxRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Parallax image
+      // Parallax on photo
       gsap.to(imgRef.current, {
         yPercent: 20,
         ease: 'none',
@@ -35,215 +26,211 @@ export default function Hero() {
         },
       });
 
-      // Photo box reveal from right
-      gsap.fromTo(imgBoxRef.current,
-        { clipPath: 'inset(0 100% 0 0)', opacity: 1 },
-        { clipPath: 'inset(0 0% 0 0)', duration: 1.2, ease: 'power3.inOut', delay: 0.6 }
-      );
-
-      // Accent box scale
-      gsap.fromTo(accentBoxRef.current,
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2)', delay: 1.4 }
-      );
-
-      // Entrance timeline
+      // Entrance
       const tl = gsap.timeline({ delay: 0.1 });
-      tl.fromTo(labelRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+
+      tl.fromTo('.hero-label',
+        { opacity: 0, x: -16 },
+        { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out' }
       )
-      .fromTo(title1Ref.current,
-        { opacity: 0, y: 80 },
-        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.2'
+      .fromTo('.hero-word',
+        { yPercent: 110, rotateX: 12 },
+        { yPercent: 0, rotateX: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out' },
+        '-=0.2'
       )
-      .fromTo(title2Ref.current,
-        { opacity: 0, y: 80 },
-        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.75'
+      .fromTo('.hero-divider',
+        { scaleX: 0, transformOrigin: 'left' },
+        { scaleX: 1, duration: 0.6, ease: 'power3.out' },
+        '-=0.4'
       )
-      .fromTo(lineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 0.7, ease: 'power3.out', transformOrigin: 'left' }, '-=0.4'
+      .fromTo('.hero-sub',
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+        '-=0.3'
       )
-      .fromTo(subRef.current,
+      .fromTo('.hero-cta',
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+        '-=0.3'
+      )
+      .fromTo('.hero-img-panel',
+        { clipPath: 'inset(0 100% 0 0)' },
+        { clipPath: 'inset(0 0% 0 0)', duration: 1.2, ease: 'power3.inOut' },
+        0.4
+      )
+      .fromTo('.hero-stat-item',
         { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4'
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power3.out' },
+        '-=0.6'
       )
-      .fromTo(ctaRef.current,
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4'
-      )
-      .fromTo(statsRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3'
-      )
-      .fromTo(marqueeRef.current,
+      .fromTo('.hero-marquee',
         { opacity: 0 },
-        { opacity: 1, duration: 0.5 }, '-=0.3'
+        { opacity: 1, duration: 0.4 },
+        '-=0.2'
       );
     });
     return () => ctx.revert();
   }, []);
 
-  const marqueeText = 'CONSTRUÇÃO CIVIL · REFORMAS · OBRAS INDUSTRIAIS · INCORPORAÇÃO IMOBILIÁRIA · GERENCIAMENTO DE OBRAS · INFRAESTRUTURA · ';
+  const marqueeItems = [
+    'CONSTRUÇÃO CIVIL',
+    'OBRAS INDUSTRIAIS',
+    'REFORMAS',
+    'INCORPORAÇÃO IMOBILIÁRIA',
+    'GERENCIAMENTO DE OBRAS',
+    'INFRAESTRUTURA',
+  ];
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden" style={{ background: '#F7F4EF', minHeight: '100vh' }}>
+    <section
+      ref={sectionRef}
+      style={{
+        background: '#0A0A0A',
+        minHeight: '100vh',
+        overflow: 'hidden',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      {/* Three.js animated background */}
+      <HeroCanvas />
 
-      {/* Right accent band */}
-      <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:block" style={{ background: '#EDE9E3' }} />
-
-      {/* Photo box - overlapping layout */}
+      {/* Right photo panel */}
       <div
-        ref={imgBoxRef}
-        className="absolute hidden lg:block overflow-hidden z-10"
+        className="hero-img-panel hidden lg:block absolute"
         style={{
-          top: '10%',
-          right: '3%',
-          width: '40%',
-          height: '70%',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: '46%',
           clipPath: 'inset(0 100% 0 0)',
+          zIndex: 1,
         }}
       >
         <div
           ref={imgRef}
-          className="absolute inset-0 scale-110"
           style={{
+            position: 'absolute',
+            inset: 0,
             backgroundImage: `url(${IMAGES.heroBg})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center top',
+            backgroundPosition: 'center',
+            transform: 'scale(1.14)',
           }}
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(237,233,227,0.3))' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, #0A0A0A 0%, rgba(10,10,10,0.2) 40%, transparent)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,10,0.15)' }} />
       </div>
-
-      {/* Accent corner box */}
-      <div
-        ref={accentBoxRef}
-        className="absolute hidden lg:block z-20"
-        style={{
-          top: '8%',
-          right: 'calc(3% + 38%)',
-          width: '60px',
-          height: '60px',
-          background: '#cc5500',
-          transform: 'scale(0)',
-        }}
-      />
 
       {/* Mobile background */}
-      <div className="absolute inset-0 lg:hidden">
-        <img
-          src={IMAGES.heroBg}
-          alt=""
-          className="w-full h-full object-cover"
-          style={{ opacity: 0.12 }}
-          loading="eager"
-        />
+      <div className="absolute inset-0 lg:hidden" style={{ zIndex: 0 }}>
+        <img src={IMAGES.heroBg} alt="" className="w-full h-full object-cover" style={{ opacity: 0.07 }} loading="eager" />
       </div>
 
-      {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 pt-36 pb-10">
+      {/* ── Main content ── */}
+      <div
+        className="relative flex-1 flex flex-col justify-center"
+        style={{ zIndex: 10, maxWidth: 1400, width: '100%', margin: '0 auto', padding: 'clamp(110px,14vh,160px) clamp(24px,6vw,80px) 0' }}
+      >
 
-        {/* Label */}
-        <div ref={labelRef} className="flex items-center gap-3 mb-10 opacity-0">
-          <div className="w-8 h-px" style={{ background: '#cc5500' }} />
-          <span className="font-cormorantSC text-[11px] tracking-[0.35em]" style={{ color: '#cc5500' }}>
+        {/* Label row */}
+        <div className="hero-label flex items-center gap-3 mb-8" style={{ opacity: 0 }}>
+          <div style={{ width: 24, height: 1, background: '#cc5500' }} />
+          <span style={{ fontFamily: 'Cormorant SC, serif', fontSize: 10, letterSpacing: '0.38em', color: '#cc5500' }}>
             CONSTRUÇÃO CIVIL DE ALTO PADRÃO
           </span>
         </div>
 
-        {/* Giant title */}
-        <div className="overflow-hidden mb-1">
-          <h1
-            ref={title1Ref}
-            className="font-cormorant font-light leading-[0.88] opacity-0"
-            style={{
-              fontSize: 'clamp(72px, 10vw, 148px)',
-              color: '#0A0A0A',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Construindo
-          </h1>
-        </div>
-        <div className="overflow-hidden mb-8">
-          <h1
-            ref={title2Ref}
-            className="font-cormorant font-light leading-[0.88] opacity-0"
-            style={{
-              fontSize: 'clamp(72px, 10vw, 148px)',
-              color: '#0A0A0A',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            o <em style={{ color: '#cc5500', fontStyle: 'italic' }}>Futuro.</em>
-          </h1>
+        {/* ── Headline ── each word wraps in an overflow:hidden clipper */}
+        <div style={{ marginBottom: 32, perspective: '800px' }}>
+          {['Construindo', 'com', 'Excelência.'].map((word, i) => (
+            <div key={word} style={{ overflow: 'hidden', lineHeight: 0.93 }}>
+              <span
+                className="hero-word"
+                style={{
+                  display: 'block',
+                  fontFamily: 'Cormorant Garamond, serif',
+                  fontSize: 'clamp(52px, 9.8vw, 148px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.025em',
+                  color: i === 2 ? '#cc5500' : '#ffffff',
+                  fontStyle: i === 2 ? 'italic' : 'normal',
+                  lineHeight: 0.93,
+                }}
+              >
+                {word}
+              </span>
+            </div>
+          ))}
         </div>
 
-        {/* Accent line */}
-        <div
-          ref={lineRef}
-          className="mb-7 origin-left"
-          style={{ height: '2px', background: '#cc5500', width: '80px', transform: 'scaleX(0)' }}
-        />
+        {/* Divider */}
+        <div className="hero-divider" style={{ width: 60, height: 2, background: '#cc5500', marginBottom: 24 }} />
 
         {/* Subtitle */}
         <p
-          ref={subRef}
-          className="font-dm font-light leading-relaxed mb-10 opacity-0"
-          style={{ fontSize: '16px', color: 'rgba(10,10,10,0.55)', maxWidth: '380px' }}
+          className="hero-sub"
+          style={{
+            fontFamily: 'DM Sans, sans-serif',
+            fontSize: 14,
+            color: 'rgba(255,255,255,0.7)',
+            maxWidth: 380,
+            lineHeight: 1.75,
+            fontWeight: 300,
+            marginBottom: 32,
+            opacity: 0,
+          }}
         >
-          Obras residenciais, industriais, reformas e incorporações em São José do Rio Preto
-          e região com excelência, tecnologia e compromisso.
+          Construção civil de alto padrão — obras públicas, pontes, escolas,
+          infraestrutura e edificações privadas em toda a região.
         </p>
 
         {/* CTAs */}
-        <div ref={ctaRef} className="flex flex-wrap gap-4 items-center opacity-0">
+        <div className="hero-cta flex flex-wrap gap-4 items-center" style={{ opacity: 0 }}>
           <Link
             to="/portfolio"
-            className="group flex items-center gap-3 font-dm font-medium text-sm px-7 py-4 rounded-sm transition-all duration-300"
-            style={{ background: '#cc5500', color: '#fff' }}
+            className="group flex items-center gap-3"
+            style={{ background: '#cc5500', color: '#fff', fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 500, padding: '14px 28px', letterSpacing: '0.03em', textDecoration: 'none', transition: 'background 0.3s' }}
             onMouseEnter={(e) => (e.currentTarget.style.background = '#b34a00')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#cc5500')}
           >
             Ver Portfólio
-            <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
           <Link
-            to="/sobre"
-            className="font-dm font-light text-sm transition-all duration-300 border-b"
-            style={{ color: '#0A0A0A', borderColor: 'rgba(10,10,10,0.25)', paddingBottom: '2px' }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#cc5500')}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.25)')}
+            to="/contato"
+            style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 300, borderBottom: '1px solid rgba(255,255,255,0.25)', paddingBottom: 2, textDecoration: 'none', transition: 'color 0.3s, border-color 0.3s' }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.65)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; }}
           >
-            Conheça a RTL
+            Solicitar Orçamento
           </Link>
         </div>
       </div>
 
-      {/* Stats bar */}
+      {/* ── Stats bar ── */}
       <div
-        ref={statsRef}
-        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 pb-0 mt-16 opacity-0"
+        className="relative"
+        style={{ zIndex: 10, maxWidth: 1400, width: '100%', margin: '52px auto 0', padding: '0 clamp(24px,6vw,80px)' }}
       >
-        <div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-0"
-          style={{ borderTop: '1px solid rgba(10,10,10,0.1)' }}
-        >
+        <div className="grid grid-cols-2 lg:grid-cols-4" style={{ borderTop: '1px solid rgba(255,255,255,0.12)' }}>
           {STATS.map((stat, i) => (
             <div
               key={stat.label}
-              className="py-6 pr-6"
-              style={{ borderRight: i < 3 ? '1px solid rgba(10,10,10,0.06)' : 'none' }}
+              className="hero-stat-item py-6 pr-4 lg:pr-6"
+              style={{ borderRight: i % 2 === 0 ? '1px solid rgba(255,255,255,0.08)' : 'none', opacity: 0 }}
             >
-              <div
-                className="font-cormorant font-light leading-none mb-1"
-                style={{ fontSize: 'clamp(36px, 4vw, 52px)', color: '#0A0A0A' }}
-              >
-                {stat.prefix}<span>{stat.value}</span>{stat.suffix}
+              {/* Big number */}
+              <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(32px, 4vw, 52px)', color: '#fff', fontWeight: 300, lineHeight: 1, letterSpacing: '-0.02em' }}>
+                <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '68%' }}>{stat.prefix}</span>
+                {stat.value}
+                {stat.suffix && (
+                  <span style={{ color: '#cc5500', fontSize: '52%', marginLeft: 2 }}>{stat.suffix}</span>
+                )}
               </div>
-              <p className="font-dm font-light text-xs" style={{ color: 'rgba(10,10,10,0.4)' }}>
+              {/* Label */}
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: 'rgba(255,255,255,0.6)', fontWeight: 300, marginTop: 5, letterSpacing: '0.02em' }}>
                 {stat.label}
               </p>
             </div>
@@ -251,25 +238,18 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Marquee band */}
+      {/* ── Marquee ── */}
       <div
-        ref={marqueeRef}
-        className="relative z-10 overflow-hidden mt-0 opacity-0"
-        style={{ background: '#0A0A0A', padding: '14px 0', marginTop: '40px' }}
+        className="hero-marquee relative overflow-hidden"
+        style={{ background: '#cc5500', padding: '11px 0', marginTop: 40, opacity: 0, zIndex: 10 }}
       >
-        <div className="marquee-track flex gap-0 whitespace-nowrap" style={{ width: 'max-content' }}>
-          {[...Array(4)].map((_, i) => (
-            <span
-              key={i}
-              className="font-cormorantSC text-[11px] tracking-[0.28em] px-6"
-              style={{ color: 'rgba(255,255,255,0.35)' }}
-            >
-              {marqueeText.split(' · ').map((item, j) => (
+        <div className="marquee-track flex whitespace-nowrap" style={{ width: 'max-content' }}>
+          {[...Array(6)].map((_, ri) => (
+            <span key={ri} style={{ fontFamily: 'Cormorant SC, serif', fontSize: 10, letterSpacing: '0.3em', color: 'rgba(255,255,255,0.8)', padding: '0 0' }}>
+              {marqueeItems.map((item, j) => (
                 <span key={j}>
-                  {item}
-                  {j < marqueeText.split(' · ').length - 1 && (
-                    <span style={{ color: '#cc5500', margin: '0 16px' }}>·</span>
-                  )}
+                  <span style={{ padding: '0 20px' }}>{item}</span>
+                  <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '8px' }}>◆</span>
                 </span>
               ))}
             </span>
@@ -277,13 +257,14 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="hidden lg:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2 z-10">
-        <span className="font-cormorantSC text-[9px] tracking-[0.35em]" style={{ color: 'rgba(10,10,10,0.3)' }}>SCROLL</span>
-        <div className="w-px h-10 relative overflow-hidden" style={{ background: 'rgba(10,10,10,0.1)' }}>
-          <div className="scroll-line absolute top-0 w-full h-1/2" style={{ background: '#cc5500' }} />
+      {/* Scroll line */}
+      <div className="hidden lg:flex absolute" style={{ bottom: 112, right: 'clamp(24px,6vw,80px)', flexDirection: 'column', alignItems: 'center', gap: 8, zIndex: 10 }}>
+        <div style={{ width: 1, height: 52, background: 'rgba(255,255,255,0.1)', position: 'relative', overflow: 'hidden' }}>
+          <div className="scroll-line" style={{ position: 'absolute', top: 0, width: '100%', height: '50%', background: '#cc5500' }} />
         </div>
+        <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 9, letterSpacing: '0.32em', color: 'rgba(255,255,255,0.25)', writingMode: 'vertical-rl', textTransform: 'uppercase' }}>Scroll</span>
       </div>
+
     </section>
   );
 }

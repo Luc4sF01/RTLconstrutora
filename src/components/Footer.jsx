@@ -30,7 +30,7 @@ export default function Footer() {
           <div>
             <h4 className="font-cormorantSC text-[10px] tracking-[0.25em] text-white/40 mb-5">LINKS RÁPIDOS</h4>
             <ul className="space-y-3">
-              {[{ label: 'Início', to: '/' }, { label: 'Sobre a RTL', to: '/sobre' }, { label: 'Portfólio', to: '/portfolio' }, { label: 'Contato', to: '/contato' }].map((l) => (
+              {[{ label: 'Início', to: '/' }, { label: 'Sobre a RTL', to: '/sobre' }, { label: 'Serviços', to: '/servicos' }, { label: 'Portfólio', to: '/portfolio' }, { label: 'Contato', to: '/contato' }].map((l) => (
                 <li key={l.to}><Link to={l.to} className="font-dm font-light text-sm text-white/35 hover:text-white/70 transition-colors">{l.label}</Link></li>
               ))}
             </ul>
@@ -60,6 +60,26 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <p className="font-dm font-light text-xs text-white/20">© 2025 RTL Construção de Edifícios Ltda. Todos os direitos reservados.</p>
           <p className="font-dm font-light text-xs" style={{ color: 'rgba(255,255,255,0.12)' }}>CNPJ: {COMPANY.cnpj}</p>
+        </div>
+
+        {/* Okto credit */}
+        <div
+          className="flex items-center justify-center gap-3 mt-6 pt-5"
+          style={{ borderTop: '1px solid rgba(204,85,0,0.15)' }}
+        >
+          <div style={{ width: 28, height: 1, background: 'rgba(204,85,0,0.4)' }} />
+          <a
+            href="https://okto-ag.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-dm font-light text-[11px] tracking-widest transition-colors duration-300"
+            style={{ color: 'rgba(204,85,0,0.5)', letterSpacing: '0.18em' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#cc5500')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(204,85,0,0.5)')}
+          >
+            DESENVOLVIDO POR OKTO
+          </a>
+          <div style={{ width: 28, height: 1, background: 'rgba(204,85,0,0.4)' }} />
         </div>
       </div>
     </footer>

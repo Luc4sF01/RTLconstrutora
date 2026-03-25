@@ -71,18 +71,10 @@ export default function Testimonials() {
                   >
                     "{t.text}"
                   </p>
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={t.avatar}
-                      alt={t.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                      style={{ border: '1px solid rgba(204,85,0,0.35)' }}
-                      loading="lazy"
-                    />
-                    <div className="text-left">
-                      <p className="font-dm font-medium text-sm text-white">{t.name}</p>
-                      <p className="font-dm font-light text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.35)' }}>{t.role}</p>
-                    </div>
+                  <div className="flex flex-col items-center gap-3">
+                    <div style={{ width: 32, height: 1, background: 'rgba(204,85,0,0.45)' }} />
+                    <p className="font-dm font-medium text-sm text-white">{t.name}</p>
+                    <p className="font-dm font-light text-xs" style={{ color: 'rgba(255,255,255,0.3)', letterSpacing: '0.06em' }}>{t.role}</p>
                   </div>
                 </div>
               </SwiperSlide>

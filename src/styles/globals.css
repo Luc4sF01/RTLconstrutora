@@ -104,3 +104,9 @@ html.lenis { height: auto; }
 
 /* 3D Canvas */
 .canvas-wrapper canvas { outline: none; }
+
+/* Spinner */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
