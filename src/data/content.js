@@ -35,10 +35,10 @@ export const IMAGES = {
 // Estatísticas — valores conservadores e defensáveis
 // "Anos de experiência" refere-se ao acúmulo do time de engenheiros, não só da empresa
 export const STATS = [
-  { value: 20, prefix: '+', suffix: '', label: 'Obras Concluídas' },
-  { value: 8,  prefix: '',  suffix: '+', label: 'Municípios Atendidos' },
-  { value: 15, prefix: '+', suffix: '', label: 'Anos de Experiência' },
-  { value: 2,  prefix: '',  suffix: '+', label: 'Anos no Mercado' },
+  { value: 20,  prefix: '+', suffix: '',  label: 'Obras Concluídas' },
+  { value: 100, prefix: '',  suffix: '%', label: 'Entregas no Prazo' },
+  { value: 15,  prefix: '+', suffix: '',  label: 'Anos de Experiência' },
+  { value: 2,   prefix: '',  suffix: '+', label: 'Anos no Mercado' },
 ];
 
 export const SERVICES = [

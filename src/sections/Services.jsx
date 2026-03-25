@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SERVICES } from '../data/content';
@@ -245,13 +246,17 @@ export default function Services({ hideHeader = false }) {
         >
           "Cada obra é única — e tratamos assim."
         </p>
-        <div
+        <Link
+          to="/portfolio"
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            cursor: 'pointer',
+            textDecoration: 'none',
+            transition: 'opacity 0.3s',
           }}
+          onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.7')}
+          onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
         >
           <span
             style={{
@@ -264,7 +269,7 @@ export default function Services({ hideHeader = false }) {
             VER PORTFÓLIO COMPLETO
           </span>
           <div style={{ width: 20, height: 1, background: '#cc5500' }} />
-        </div>
+        </Link>
       </div>
     </section>
   );

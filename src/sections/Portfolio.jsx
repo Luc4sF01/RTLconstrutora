@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -273,8 +274,8 @@ export default function Portfolio() {
                 marginTop: 48,
               }}
             >
-              <a
-                href="/portfolio"
+              <Link
+                to="/portfolio"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -291,7 +292,7 @@ export default function Portfolio() {
               >
                 VER TODOS OS PROJETOS
                 <div style={{ width: 28, height: 1, background: 'currentColor' }} />
-              </a>
+              </Link>
             </div>
           </motion.div>
         </AnimatePresence>

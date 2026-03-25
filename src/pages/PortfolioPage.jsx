@@ -19,22 +19,22 @@ const SECTORS = [
   {
     title: 'Obras Governamentais',
     desc: 'Escolas, postos de saúde, praças e equipamentos urbanos via licitação pública.',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80',
   },
   {
     title: 'Infraestrutura Viária',
     desc: 'Pontes, viadutos, pavimentação asfáltica e drenagem urbana.',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80',
   },
   {
     title: 'Edificações Privadas',
     desc: 'Residenciais, comerciais e industriais com gestão técnica completa.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1590534247854-e97d5e3feef6?w=800&q=80',
   },
   {
     title: 'Reformas e Revitalizações',
     desc: 'Modernização e ampliação de edificações públicas e privadas.',
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80',
   },
 ];
 

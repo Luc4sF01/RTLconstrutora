@@ -12,14 +12,8 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [heroLight, setHeroLight] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    // Hero is dark on Home (new dark hero), light on other pages
-    setHeroLight(location.pathname !== '/');
-  }, [location.pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -29,25 +23,27 @@ export default function Header() {
 
   useEffect(() => { setMobileOpen(false); }, [location]);
 
-  const isLight = heroLight && !scrolled;
-  const textColor = isLight ? '#0A0A0A' : '#ffffff';
-  const textMuted = isLight ? 'rgba(10,10,10,0.55)' : 'rgba(255,255,255,0.65)';
+  // All page heroes have dark photo backgrounds — always use white text
+  const textColor = '#ffffff';
+  const textMuted = 'rgba(255,255,255,0.6)';
 
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: scrolled ? 'rgba(10,10,10,0.92)' : 'transparent',
+        background: scrolled
+          ? 'rgba(10,10,10,0.92)'
+          : 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 70%, transparent 100%)',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-        transition: 'all 0.4s ease',
+        transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease',
       }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-16 flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/" className="flex flex-col leading-none">
-          <span className="font-cormorant font-bold text-3xl tracking-tight" style={{ color: scrolled ? '#fff' : textColor }}>RTL</span>
-          <span className="font-dm font-light text-[10px] tracking-widest uppercase mt-[-2px]" style={{ color: scrolled ? 'rgba(255,255,255,0.4)' : textMuted }}>
+          <span className="font-cormorant font-bold text-3xl tracking-tight" style={{ color: textColor }}>RTL</span>
+          <span className="font-dm font-light text-[10px] tracking-widest uppercase mt-[-2px]" style={{ color: textMuted }}>
             Construção de Edifícios
           </span>
         </Link>
@@ -58,7 +54,7 @@ export default function Header() {
             link.to.startsWith('/#') ? (
               <a key={link.to} href={link.to}
                 className="font-dm text-[13px] tracking-[0.08em] transition-colors duration-300 hover:opacity-100"
-                style={{ color: scrolled ? 'rgba(255,255,255,0.6)' : textMuted }}
+                style={{ color: textMuted }}
               >
                 {link.label}
               </a>
@@ -67,7 +63,7 @@ export default function Header() {
                 className={({ isActive }) =>
                   `font-dm text-[13px] tracking-[0.08em] transition-colors duration-300 ${isActive ? 'opacity-100' : 'hover:opacity-100'}`
                 }
-                style={{ color: scrolled ? (location.pathname === link.to ? '#fff' : 'rgba(255,255,255,0.6)') : (location.pathname === link.to ? textColor : textMuted) }}
+                style={{ color: location.pathname === link.to ? '#fff' : textMuted }}
               >
                 {link.label}
               </NavLink>
@@ -86,7 +82,7 @@ export default function Header() {
             Solicitar Orçamento
           </Link>
           <button className="lg:hidden p-2" onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ color: scrolled ? '#fff' : textColor }}>
+            style={{ color: textColor }}>
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>

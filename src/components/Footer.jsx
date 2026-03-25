@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Linkedin, MessageCircle } from 'lucide-react';
-import { COMPANY } from '../data/content';
+import { COMPANY, SERVICES } from '../data/content';
 
 export default function Footer() {
   return (
@@ -39,8 +39,12 @@ export default function Footer() {
           <div>
             <h4 className="font-cormorantSC text-[10px] tracking-[0.25em] text-white/40 mb-5">SERVIÇOS</h4>
             <ul className="space-y-3">
-              {['Construção Civil', 'Obras Industriais', 'Reformas e Ampliações', 'Incorporação Imobiliária', 'Infraestrutura Viária'].map((s) => (
-                <li key={s}><span className="font-dm font-light text-sm text-white/35">{s}</span></li>
+              {SERVICES.map((s) => (
+                <li key={s.id}>
+                  <Link to="/servicos" className="font-dm font-light text-sm text-white/35 hover:text-white/60 transition-colors">
+                    {s.title}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>

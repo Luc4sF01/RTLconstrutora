@@ -16,6 +16,7 @@ import AboutPage from './pages/AboutPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
+import BlogPostPage from './pages/BlogPostPage';
 import NotFound from './pages/NotFound';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -56,6 +57,7 @@ function AnimatedRoutes() {
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/servicos" element={<ServicesPage />} />
           <Route path="/contato" element={<ContactPage />} />
+          <Route path="/artigos/:slug" element={<BlogPostPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>
