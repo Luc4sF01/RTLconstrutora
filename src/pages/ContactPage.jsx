@@ -14,7 +14,7 @@ function Marquee() {
   useEffect(() => {
     gsap.to(trackRef.current, { x: '-50%', duration: 24, repeat: -1, ease: 'none' });
   }, []);
-  const items = ['FALE CONOSCO', 'OR�AMENTO SEM COMPROMISSO', 'OBRAS P�BLICAS', 'RTL CONSTRU��O', 'S�O JOS� DO RIO PRETO', 'ENTREGUE COM RIGOR'];
+  const items = ['FALE CONOSCO', 'ORÇAMENTO SEM COMPROMISSO', 'OBRAS PÚBLICAS', 'RTL CONSTRUÇÃO', 'SÃO JOSÉ DO RIO PRETO', 'ENTREGUE COM RIGOR'];
   const doubled = [...items, ...items];
   return (
     <div style={{ background: '#cc5500', overflow: 'hidden', padding: '12px 0' }}>
@@ -105,7 +105,7 @@ export default function ContactPage() {
     { text: 'Construindo',  color: '#fff' },
     { text: 'juntos,',      color: '#fff' },
     { text: 'do plano',     color: '#cc5500', italic: false },
-    { text: '� entrega.',   color: '#fff' },
+    { text: 'à entrega.',   color: '#fff' },
   ];
 
   return (
@@ -211,7 +211,7 @@ export default function ContactPage() {
             backdropFilter: 'blur(8px)',
           }}>
             <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 9, letterSpacing: '0.26em', color: 'rgba(204,85,0,0.85)' }}>
-              S�O JOS� DO RIO PRETO � SP
+              SÃO JOSÉ DO RIO PRETO — SP
             </p>
           </div>
         </div>
@@ -234,7 +234,7 @@ export default function ContactPage() {
         }}>
           <div style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.5)' }} />
           <span style={{ fontFamily: 'Cormorant SC, serif', fontSize: 9, letterSpacing: '0.3em', color: 'rgba(255,255,255,0.9)', whiteSpace: 'nowrap' }}>
-            PREENCHA O FORMUL�RIO ABAIXO
+            PREENCHA O FORMULÁRIO ABAIXO
           </span>
           <div style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.5)' }} />
         </div>
@@ -251,7 +251,7 @@ export default function ContactPage() {
             {/* -- INFO -- */}
             <div ref={infoRef} style={{ opacity: 0 }}>
 
-              {/* Phone � editorial large */}
+              {/* Phone — editorial large */}
               <div style={{ marginBottom: 44 }}>
                 <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.36em', color: '#cc5500', marginBottom: 10 }}>
                   TELEFONE / WHATSAPP
@@ -292,10 +292,10 @@ export default function ContactPage() {
 
               {/* Address */}
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 28, marginBottom: 44 }}>
-                <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.36em', color: '#cc5500', marginBottom: 9 }}>ENDERE�O</p>
+                <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.36em', color: '#cc5500', marginBottom: 9 }}>ENDEREÇO</p>
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.38)', lineHeight: 1.75 }}>
                   {COMPANY.address.street}<br />
-                  {COMPANY.address.neighborhood} � CEP {COMPANY.address.cep}<br />
+                  {COMPANY.address.neighborhood} — CEP {COMPANY.address.cep}<br />
                   {COMPANY.address.city}
                 </p>
               </div>
@@ -307,7 +307,7 @@ export default function ContactPage() {
                   width="100%" height="190"
                   style={{ border: 0, filter: 'grayscale(100%) invert(1) contrast(1.1)', display: 'block' }}
                   allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-                  title="RTL Localiza��o"
+                  title="RTL Localização"
                 />
               </div>
 
@@ -320,7 +320,7 @@ export default function ContactPage() {
                   color: 'rgba(255,255,255,0.35)',
                   lineHeight: 1.4,
                 }}>
-                  "Cada obra come�a com uma conversa � fale conosco."
+                  "Cada obra começa com uma conversa — fale conosco."
                 </p>
               </div>
             </div>
@@ -346,10 +346,10 @@ export default function ContactPage() {
                 {/* Field: Nome */}
                 <div>
                   <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
-                    01 � NOME
+                    01 — NOME
                   </label>
                   <input
-                    {...register('name', { required: 'Nome obrigat�rio' })}
+                    {...register('name', { required: 'Nome obrigatório' })}
                     placeholder="Nome completo"
                     style={INPUT} onFocus={onFocus} onBlur={onBlur}
                   />
@@ -360,10 +360,10 @@ export default function ContactPage() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
                   <div>
                     <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
-                      02 � TELEFONE
+                      02 — TELEFONE
                     </label>
                     <input
-                      {...register('phone', { required: 'Obrigat�rio' })}
+                      {...register('phone', { required: 'Obrigatório' })}
                       placeholder="(00) 00000-0000"
                       style={INPUT} onFocus={onFocus} onBlur={onBlur}
                     />
@@ -371,12 +371,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
-                      03 � EMAIL
+                      03 — EMAIL
                     </label>
                     <input
                       {...register('email', {
-                        required: 'Obrigat�rio',
-                        pattern: { value: /^\S+@\S+\.\S+$/, message: 'Email inv�lido' },
+                        required: 'Obrigatório',
+                        pattern: { value: /^\S+@\S+\.\S+$/, message: 'Email inválido' },
                       })}
                       placeholder="seu@email.com"
                       style={INPUT} onFocus={onFocus} onBlur={onBlur}
@@ -388,7 +388,7 @@ export default function ContactPage() {
                 {/* Field: Tipo de obra */}
                 <div>
                   <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
-                    04 � TIPO DE OBRA
+                    04 — TIPO DE OBRA
                   </label>
                   <select
                     {...register('obraType')}
@@ -396,7 +396,7 @@ export default function ContactPage() {
                     onFocus={onFocus} onBlur={onBlur}
                   >
                     <option value="">Selecione...</option>
-                    {['Obra P�blica', 'Infraestrutura Vi�ria', 'Edifica��o Institucional', 'Constru��o Civil', 'Reforma / Revitaliza��o', 'Outro'].map(o => (
+                    {['Obra Pública', 'Infraestrutura Viária', 'Edificação Institucional', 'Construção Civil', 'Reforma / Revitalização', 'Outro'].map(o => (
                       <option key={o} value={o}>{o}</option>
                     ))}
                   </select>
@@ -405,12 +405,12 @@ export default function ContactPage() {
                 {/* Field: Mensagem */}
                 <div>
                   <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
-                    05 � MENSAGEM
+                    05 — MENSAGEM
                   </label>
                   <textarea
                     {...register('message', {
-                      required: 'Mensagem obrigat�ria',
-                      minLength: { value: 20, message: 'M�nimo 20 caracteres' },
+                      required: 'Mensagem obrigatória',
+                      minLength: { value: 20, message: 'Mínimo 20 caracteres' },
                     })}
                     placeholder="Descreva seu projeto..."
                     rows={5}
@@ -450,7 +450,7 @@ export default function ContactPage() {
                 {status === 'success' && (
                   <div style={{ padding: '14px 18px', border: '1px solid rgba(34,197,94,0.2)', background: 'rgba(34,197,94,0.05)' }}>
                     <p style={{ fontFamily: 'DM Sans', fontSize: 13, fontWeight: 300, color: 'rgba(34,197,94,0.75)' }}>
-                      ? Mensagem enviada. Entraremos em contato em breve.
+                      ✓ Mensagem enviada. Entraremos em contato em breve.
                     </p>
                   </div>
                 )}
