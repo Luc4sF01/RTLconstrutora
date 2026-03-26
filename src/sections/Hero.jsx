@@ -137,7 +137,7 @@ export default function Hero() {
         {/* Label row */}
         <div className="hero-label flex items-center gap-3 mb-8" style={{ opacity: 0 }}>
           <div style={{ width: 24, height: 1, background: '#cc5500' }} />
-          <span style={{ fontFamily: 'Cormorant SC, serif', fontSize: 10, letterSpacing: '0.38em', color: '#cc5500' }}>
+          <span style={{ fontFamily: 'Cormorant SC, serif', fontSize: 12, letterSpacing: '0.38em', color: '#cc5500' }}>
             CONSTRUÇÃO CIVIL DE ALTO PADRÃO
           </span>
         </div>
@@ -173,7 +173,7 @@ export default function Hero() {
           className="hero-sub"
           style={{
             fontFamily: 'DM Sans, sans-serif',
-            fontSize: 14,
+            fontSize: 16,
             color: 'rgba(255,255,255,0.7)',
             maxWidth: 380,
             lineHeight: 1.75,
@@ -191,7 +191,7 @@ export default function Hero() {
           <Link
             to="/portfolio"
             className="group flex items-center gap-3"
-            style={{ background: '#cc5500', color: '#fff', fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 500, padding: '14px 28px', letterSpacing: '0.03em', textDecoration: 'none', transition: 'background 0.3s' }}
+            style={{ background: '#cc5500', color: '#fff', fontFamily: 'DM Sans, sans-serif', fontSize: 15, fontWeight: 500, padding: '14px 28px', letterSpacing: '0.03em', textDecoration: 'none', transition: 'background 0.3s' }}
             onMouseEnter={(e) => (e.currentTarget.style.background = '#b34a00')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#cc5500')}
           >
@@ -200,7 +200,7 @@ export default function Hero() {
           </Link>
           <Link
             to="/contato"
-            style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 300, borderBottom: '1px solid rgba(255,255,255,0.25)', paddingBottom: 2, textDecoration: 'none', transition: 'color 0.3s, border-color 0.3s' }}
+            style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans, sans-serif', fontSize: 15, fontWeight: 300, borderBottom: '1px solid rgba(255,255,255,0.25)', paddingBottom: 2, textDecoration: 'none', transition: 'color 0.3s, border-color 0.3s' }}
             onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.65)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; }}
           >
@@ -230,7 +230,7 @@ export default function Hero() {
                 )}
               </div>
               {/* Label */}
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: 'rgba(255,255,255,0.6)', fontWeight: 300, marginTop: 5, letterSpacing: '0.02em' }}>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, color: 'rgba(255,255,255,0.6)', fontWeight: 300, marginTop: 5, letterSpacing: '0.02em' }}>
                 {stat.label}
               </p>
             </div>
@@ -245,7 +245,7 @@ export default function Hero() {
       >
         <div className="marquee-track flex whitespace-nowrap" style={{ width: 'max-content' }}>
           {[...Array(6)].map((_, ri) => (
-            <span key={ri} style={{ fontFamily: 'Cormorant SC, serif', fontSize: 10, letterSpacing: '0.3em', color: 'rgba(255,255,255,0.8)', padding: '0 0' }}>
+            <span key={ri} style={{ fontFamily: 'Cormorant SC, serif', fontSize: 12, letterSpacing: '0.3em', color: 'rgba(255,255,255,0.8)', padding: '0 0' }}>
               {marqueeItems.map((item, j) => (
                 <span key={j}>
                   <span style={{ padding: '0 20px' }}>{item}</span>
@@ -262,7 +262,7 @@ export default function Hero() {
         <div style={{ width: 1, height: 52, background: 'rgba(255,255,255,0.1)', position: 'relative', overflow: 'hidden' }}>
           <div className="scroll-line" style={{ position: 'absolute', top: 0, width: '100%', height: '50%', background: '#cc5500' }} />
         </div>
-        <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 9, letterSpacing: '0.32em', color: 'rgba(255,255,255,0.25)', writingMode: 'vertical-rl', textTransform: 'uppercase' }}>Scroll</span>
+        <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, letterSpacing: '0.32em', color: 'rgba(255,255,255,0.25)', writingMode: 'vertical-rl', textTransform: 'uppercase' }}>Scroll</span>
       </div>
 
     </section>

@@ -51,7 +51,7 @@ export default function Portfolio() {
             <p
               style={{
                 fontFamily: 'Cormorant SC, serif',
-                fontSize: 10,
+                fontSize: 12,
                 letterSpacing: '0.38em',
                 color: '#cc5500',
                 marginBottom: 16,
@@ -63,7 +63,7 @@ export default function Portfolio() {
             <h2
               style={{
                 fontFamily: 'Cormorant Garamond, serif',
-                fontSize: 'clamp(36px, 4.5vw, 56px)',
+                fontSize: 'clamp(40px, 5vw, 64px)',
                 fontWeight: 300,
                 color: '#0F2340',
                 letterSpacing: '-0.01em',
@@ -83,7 +83,7 @@ export default function Portfolio() {
                 onClick={() => setActiveFilter(f)}
                 style={{
                   fontFamily: 'DM Sans, sans-serif',
-                  fontSize: 11,
+                  fontSize: 13,
                   letterSpacing: '0.08em',
                   padding: '8px 18px',
                   background: activeFilter === f ? '#cc5500' : 'transparent',
@@ -147,7 +147,7 @@ export default function Portfolio() {
                     <span
                       style={{
                         fontFamily: 'Cormorant Garamond, serif',
-                        fontSize: 'clamp(14px, 1.8vw, 20px)',
+                        fontSize: 'clamp(16px, 2vw, 22px)',
                         fontWeight: 300,
                         color: hovered === item.id ? '#cc5500' : 'rgba(15,35,64,0.15)',
                         minWidth: 40,
@@ -186,7 +186,7 @@ export default function Portfolio() {
                       <h3
                         style={{
                           fontFamily: 'Cormorant Garamond, serif',
-                          fontSize: 'clamp(18px, 2.5vw, 28px)',
+                          fontSize: 'clamp(22px, 2.8vw, 32px)',
                           fontWeight: 300,
                           color: '#0F2340',
                           letterSpacing: '-0.01em',
@@ -202,7 +202,7 @@ export default function Portfolio() {
                       <p
                         style={{
                           fontFamily: 'DM Sans, sans-serif',
-                          fontSize: 11,
+                          fontSize: 13,
                           color: 'rgba(15,35,64,0.4)',
                           fontWeight: 300,
                           marginTop: 4,
@@ -217,7 +217,7 @@ export default function Portfolio() {
                       className="hidden md:block"
                       style={{
                         fontFamily: 'Cormorant SC, serif',
-                        fontSize: 9,
+                        fontSize: 11,
                         letterSpacing: '0.28em',
                         color: '#cc5500',
                         border: '1px solid rgba(204,85,0,0.25)',
@@ -242,7 +242,7 @@ export default function Portfolio() {
                       <span
                         style={{
                           fontFamily: 'DM Sans, sans-serif',
-                          fontSize: 12,
+                          fontSize: 14,
                           color: 'rgba(15,35,64,0.45)',
                           fontWeight: 300,
                         }}
@@ -252,7 +252,7 @@ export default function Portfolio() {
                       <span
                         style={{
                           fontFamily: 'DM Sans, sans-serif',
-                          fontSize: 11,
+                          fontSize: 13,
                           color: 'rgba(15,35,64,0.2)',
                           fontWeight: 300,
                         }}
@@ -281,7 +281,7 @@ export default function Portfolio() {
                   alignItems: 'center',
                   gap: 12,
                   fontFamily: 'Cormorant SC, serif',
-                  fontSize: 11,
+                  fontSize: 13,
                   letterSpacing: '0.32em',
                   color: 'rgba(15,35,64,0.35)',
                   transition: 'color 0.3s',

@@ -115,7 +115,7 @@ function RTLBrand() {
       {/* Sub */}
       <p
         className="brand-sub"
-        style={{ fontFamily: 'Cormorant SC, serif', fontSize: 'clamp(10px, 1.1vw, 13px)', letterSpacing: '0.42em', color: 'rgba(255,255,255,0.32)', textAlign: 'center', opacity: 0 }}
+        style={{ fontFamily: 'Cormorant SC, serif', fontSize: 'clamp(12px, 1.3vw, 15px)', letterSpacing: '0.42em', color: 'rgba(255,255,255,0.32)', textAlign: 'center', opacity: 0 }}
       >
         CONSTRUÇÃO DE EDIFÍCIOS
       </p>
@@ -123,7 +123,7 @@ function RTLBrand() {
       {/* Tagline */}
       <p
         className="brand-tagline"
-        style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.4vw, 17px)', color: 'rgba(204,85,0,0.65)', textAlign: 'center', marginTop: 10, fontWeight: 300, opacity: 0 }}
+        style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(16px, 1.6vw, 20px)', color: 'rgba(204,85,0,0.65)', textAlign: 'center', marginTop: 10, fontWeight: 300, opacity: 0 }}
       >
         "Construir com excelência, entregar com confiança."
       </p>
@@ -131,7 +131,7 @@ function RTLBrand() {
       {/* City */}
       <div style={{ marginTop: 26, display: 'flex', alignItems: 'center', gap: 12 }}>
         <div style={{ width: 18, height: 1, background: 'rgba(204,85,0,0.35)' }} />
-        <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 9, letterSpacing: '0.32em', color: 'rgba(255,255,255,0.18)', textTransform: 'uppercase' }}>
+        <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, letterSpacing: '0.32em', color: 'rgba(255,255,255,0.18)', textTransform: 'uppercase' }}>
           São José do Rio Preto — SP
         </span>
         <div style={{ width: 18, height: 1, background: 'rgba(204,85,0,0.35)' }} />
@@ -184,13 +184,13 @@ export default function About() {
 
           {/* Left */}
           <div ref={leftRef} style={{ opacity: 0 }}>
-            <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 10, letterSpacing: '0.38em', color: '#cc5500', marginBottom: 18 }}>SOBRE A RTL</p>
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(32px, 3.8vw, 50px)', fontWeight: 300, color: '#0A0A0A', lineHeight: 1.1, letterSpacing: '-0.01em', marginBottom: 18 }}>
+            <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 12, letterSpacing: '0.38em', color: '#cc5500', marginBottom: 18 }}>SOBRE A RTL</p>
+            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(36px, 4.2vw, 58px)', fontWeight: 300, color: '#0A0A0A', lineHeight: 1.1, letterSpacing: '-0.01em', marginBottom: 18 }}>
               Obras públicas e privadas<br />com{' '}
               <span style={{ color: '#cc5500' }}>excelência técnica</span>
             </h2>
             <div style={{ width: 44, height: 2, background: '#cc5500', marginBottom: 24 }} />
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'rgba(10,10,10,0.55)', fontWeight: 300, lineHeight: 1.7, marginBottom: 28, maxWidth: 420 }}>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 17, color: 'rgba(10,10,10,0.55)', fontWeight: 300, lineHeight: 1.7, marginBottom: 28, maxWidth: 420 }}>
               Da licitação pública ao residencial de alto padrão, a RTL executa obras
               com rigor técnico, documentação completa e transparência total — do contrato
               à entrega das chaves.
@@ -199,11 +199,11 @@ export default function About() {
               {points.map((pt, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                   <CheckCircle2 size={15} style={{ color: '#cc5500', flexShrink: 0, marginTop: 3 }} />
-                  <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, color: 'rgba(10,10,10,0.6)', fontWeight: 300, lineHeight: 1.5 }}>{pt}</span>
+                  <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'rgba(10,10,10,0.6)', fontWeight: 300, lineHeight: 1.5 }}>{pt}</span>
                 </div>
               ))}
             </div>
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, color: 'rgba(10,10,10,0.2)', marginTop: 30, letterSpacing: '0.04em' }}>CNPJ {COMPANY.cnpj}</p>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 12, color: 'rgba(10,10,10,0.2)', marginTop: 30, letterSpacing: '0.04em' }}>CNPJ {COMPANY.cnpj}</p>
           </div>
 
           {/* Right – foto */}
@@ -220,7 +220,7 @@ export default function About() {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 55%, rgba(10,10,10,0.4))' }} />
               <div style={{ position: 'absolute', bottom: 24, left: 24, background: 'rgba(10,10,10,0.88)', backdropFilter: 'blur(8px)', padding: '12px 20px', borderLeft: '2px solid #cc5500' }}>
                 <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 26, color: '#fff', fontWeight: 300, lineHeight: 1 }}>{COMPANY.founded.split(' ').pop()}</p>
-                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 9, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.18em', marginTop: 4 }}>FUNDAÇÃO</p>
+                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.18em', marginTop: 4 }}>FUNDAÇÃO</p>
               </div>
             </div>
             <div className="hidden lg:block" style={{ position: 'absolute', bottom: -12, left: -12, width: 18, height: 18, background: '#0F2340' }} />

@@ -43,7 +43,7 @@ export default function Header() {
         {/* Logo */}
         <Link to="/" className="flex flex-col leading-none">
           <span className="font-cormorant font-bold text-3xl tracking-tight" style={{ color: textColor }}>RTL</span>
-          <span className="font-dm font-light text-[10px] tracking-widest uppercase mt-[-2px]" style={{ color: textMuted }}>
+          <span className="font-dm font-light text-[12px] tracking-widest uppercase mt-[-2px]" style={{ color: textMuted }}>
             Construção de Edifícios
           </span>
         </Link>
@@ -53,7 +53,7 @@ export default function Header() {
           {NAV_LINKS.map((link) =>
             link.to.startsWith('/#') ? (
               <a key={link.to} href={link.to}
-                className="font-dm text-[13px] tracking-[0.08em] transition-colors duration-300 hover:opacity-100"
+                className="font-dm text-[15px] tracking-[0.08em] transition-colors duration-300 hover:opacity-100"
                 style={{ color: textMuted }}
               >
                 {link.label}
@@ -61,7 +61,7 @@ export default function Header() {
             ) : (
               <NavLink key={link.to} to={link.to} end={link.to === '/'}
                 className={({ isActive }) =>
-                  `font-dm text-[13px] tracking-[0.08em] transition-colors duration-300 ${isActive ? 'opacity-100' : 'hover:opacity-100'}`
+                  `font-dm text-[15px] tracking-[0.08em] transition-colors duration-300 ${isActive ? 'opacity-100' : 'hover:opacity-100'}`
                 }
                 style={{ color: location.pathname === link.to ? '#fff' : textMuted }}
               >
@@ -74,7 +74,7 @@ export default function Header() {
         {/* CTA */}
         <div className="flex items-center gap-4">
           <Link to="/contato"
-            className="hidden lg:block font-dm text-[13px] px-5 py-2.5 rounded-sm transition-all duration-300"
+            className="hidden lg:block font-dm text-[15px] px-5 py-2.5 rounded-sm transition-all duration-300"
             style={{ background: '#cc5500', color: '#fff' }}
             onMouseEnter={(e) => (e.currentTarget.style.background = '#b34a00')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#cc5500')}

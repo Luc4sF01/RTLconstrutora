@@ -50,7 +50,7 @@ export default function ServicesPage() {
           <p
             style={{
               fontFamily: 'Cormorant SC, serif',
-              fontSize: 11,
+              fontSize: 13,
               letterSpacing: '0.3em',
               color: '#cc5500',
               marginBottom: 14,
@@ -75,7 +75,7 @@ export default function ServicesPage() {
             <p
               style={{
                 fontFamily: 'DM Sans, sans-serif',
-                fontSize: 14,
+                fontSize: 16,
                 color: 'rgba(255,255,255,0.45)',
                 fontWeight: 300,
                 maxWidth: 320,
@@ -121,7 +121,7 @@ export default function ServicesPage() {
           <p
             style={{
               fontFamily: 'DM Sans, sans-serif',
-              fontSize: 14,
+              fontSize: 16,
               color: 'rgba(255,255,255,0.45)',
               fontWeight: 300,
               maxWidth: 400,

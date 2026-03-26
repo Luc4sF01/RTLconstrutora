@@ -91,7 +91,7 @@ export default function Differentials() {
               <p
                 style={{
                   fontFamily: 'Cormorant SC, serif',
-                  fontSize: 10,
+                  fontSize: 12,
                   letterSpacing: '0.38em',
                   color: '#cc5500',
                   marginBottom: 16,
@@ -116,7 +116,7 @@ export default function Differentials() {
             <p
               style={{
                 fontFamily: 'DM Sans, sans-serif',
-                fontSize: 13,
+                fontSize: 15,
                 color: 'rgba(255,255,255,0.3)',
                 fontWeight: 300,
                 maxWidth: 260,
@@ -197,7 +197,7 @@ export default function Differentials() {
                   <h3
                     style={{
                       fontFamily: 'Cormorant Garamond, serif',
-                      fontSize: 'clamp(22px, 3vw, 38px)',
+                      fontSize: 'clamp(26px, 3.2vw, 42px)',
                       fontWeight: 300,
                       color: isHovered ? '#fff' : '#0A0A0A',
                       letterSpacing: '-0.01em',
@@ -211,7 +211,7 @@ export default function Differentials() {
                   <p
                     style={{
                       fontFamily: 'DM Sans, sans-serif',
-                      fontSize: 13,
+                      fontSize: 15,
                       fontWeight: 300,
                       color: isHovered ? 'rgba(255,255,255,0.45)' : 'rgba(10,10,10,0.45)',
                       lineHeight: 1.65,
@@ -231,7 +231,7 @@ export default function Differentials() {
                   <span
                     style={{
                       fontFamily: 'Cormorant Garamond, serif',
-                      fontSize: 'clamp(14px, 2vw, 20px)',
+                      fontSize: 'clamp(16px, 2.2vw, 22px)',
                       color: isHovered ? '#cc5500' : 'rgba(10,10,10,0.12)',
                       letterSpacing: '0.02em',
                       transition: 'color 0.35s',
@@ -263,7 +263,7 @@ export default function Differentials() {
           <p
             style={{
               fontFamily: 'Cormorant Garamond, serif',
-              fontSize: 'clamp(22px, 3vw, 34px)',
+              fontSize: 'clamp(26px, 3.5vw, 40px)',
               fontWeight: 300,
               color: '#fff',
               lineHeight: 1.1,
@@ -274,7 +274,7 @@ export default function Differentials() {
           <p
             style={{
               fontFamily: 'DM Sans, sans-serif',
-              fontSize: 13,
+              fontSize: 15,
               color: 'rgba(255,255,255,0.7)',
               marginTop: 6,
               fontWeight: 300,
@@ -292,7 +292,7 @@ export default function Differentials() {
             background: '#fff',
             color: '#cc5500',
             fontFamily: 'DM Sans, sans-serif',
-            fontSize: 13,
+            fontSize: 15,
             fontWeight: 500,
             padding: '14px 28px',
             textDecoration: 'none',

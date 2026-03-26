@@ -63,7 +63,7 @@ export default function Services({ hideHeader = false }) {
             <p
               style={{
                 fontFamily: 'Cormorant SC, serif',
-                fontSize: 10,
+                fontSize: 12,
                 letterSpacing: '0.38em',
                 color: '#cc5500',
                 marginBottom: 16,
@@ -75,7 +75,7 @@ export default function Services({ hideHeader = false }) {
             <h2
               style={{
                 fontFamily: 'Cormorant Garamond, serif',
-                fontSize: 'clamp(36px, 4.5vw, 56px)',
+                fontSize: 'clamp(40px, 5vw, 64px)',
                 fontWeight: 300,
                 color: '#0A0A0A',
                 letterSpacing: '-0.01em',
@@ -88,7 +88,7 @@ export default function Services({ hideHeader = false }) {
           <p
             style={{
               fontFamily: 'DM Sans, sans-serif',
-              fontSize: 13,
+              fontSize: 15,
               color: 'rgba(10,10,10,0.4)',
               fontWeight: 300,
               maxWidth: 280,
@@ -164,7 +164,7 @@ export default function Services({ hideHeader = false }) {
               <span
                 style={{
                   fontFamily: 'Cormorant Garamond, serif',
-                  fontSize: 'clamp(16px, 2vw, 24px)',
+                  fontSize: 'clamp(18px, 2.2vw, 26px)',
                   fontWeight: 300,
                   color: hovered === i ? 'rgba(204,85,0,0.7)' : 'rgba(10,10,10,0.12)',
                   minWidth: 44,
@@ -191,7 +191,7 @@ export default function Services({ hideHeader = false }) {
               <h3
                 style={{
                   fontFamily: 'Cormorant Garamond, serif',
-                  fontSize: 'clamp(22px, 2.5vw, 32px)',
+                  fontSize: 'clamp(26px, 3vw, 38px)',
                   fontWeight: 300,
                   color: hovered === i ? '#fff' : '#0A0A0A',
                   letterSpacing: '-0.01em',
@@ -207,7 +207,7 @@ export default function Services({ hideHeader = false }) {
                 className="hidden lg:block"
                 style={{
                   fontFamily: 'DM Sans, sans-serif',
-                  fontSize: 13,
+                  fontSize: 15,
                   fontWeight: 300,
                   color: hovered === i ? 'rgba(255,255,255,0.45)' : 'rgba(10,10,10,0.45)',
                   flex: 1,
@@ -261,7 +261,7 @@ export default function Services({ hideHeader = false }) {
           <span
             style={{
               fontFamily: 'Cormorant SC, serif',
-              fontSize: 10,
+              fontSize: 12,
               letterSpacing: '0.35em',
               color: '#cc5500',
             }}

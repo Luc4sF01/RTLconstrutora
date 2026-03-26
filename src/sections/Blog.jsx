@@ -43,14 +43,14 @@ export default function Blog() {
             <div>
               <p style={{
                 fontFamily: 'Cormorant SC, serif',
-                fontSize: 10, letterSpacing: '0.38em',
+                fontSize: 12, letterSpacing: '0.38em',
                 color: '#cc5500', marginBottom: 14,
               }}>
                 CONTEÚDO TÉCNICO
               </p>
               <h2 style={{
                 fontFamily: 'Cormorant Garamond, serif',
-                fontSize: 'clamp(34px, 4vw, 52px)',
+                fontSize: 'clamp(36px, 4.5vw, 60px)',
                 fontWeight: 300, color: '#0A0A0A',
                 letterSpacing: '-0.01em', lineHeight: 1.05,
               }}>
@@ -60,7 +60,7 @@ export default function Blog() {
             </div>
             <p style={{
               fontFamily: 'DM Sans, sans-serif',
-              fontSize: 13, fontWeight: 300,
+              fontSize: 15, fontWeight: 300,
               color: 'rgba(10,10,10,0.4)', maxWidth: 260, lineHeight: 1.65,
             }}>
               Publicações sobre licitações, engenharia civil e gestão de obras para gestores públicos e privados.
@@ -101,14 +101,14 @@ export default function Blog() {
               {/* Meta */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
                 <span style={{
-                  fontFamily: 'Cormorant SC, serif', fontSize: 8,
+                  fontFamily: 'Cormorant SC, serif', fontSize: 10,
                   letterSpacing: '0.3em', color: '#cc5500',
                 }}>
                   {post.category.toUpperCase()}
                 </span>
                 <div style={{ width: 1, height: 10, background: 'rgba(10,10,10,0.15)' }} />
                 <span style={{
-                  fontFamily: 'DM Sans, sans-serif', fontSize: 11,
+                  fontFamily: 'DM Sans, sans-serif', fontSize: 13,
                   fontWeight: 300, color: 'rgba(10,10,10,0.35)',
                 }}>
                   {post.date}
@@ -118,7 +118,7 @@ export default function Blog() {
               {/* Title */}
               <h3 style={{
                 fontFamily: 'Cormorant Garamond, serif',
-                fontSize: 'clamp(18px, 1.8vw, 22px)',
+                fontSize: 'clamp(20px, 2.1vw, 26px)',
                 fontWeight: 300, color: '#0A0A0A',
                 letterSpacing: '-0.005em', lineHeight: 1.2,
                 marginBottom: 10,
@@ -129,7 +129,7 @@ export default function Blog() {
               {/* Excerpt */}
               <p style={{
                 fontFamily: 'DM Sans, sans-serif',
-                fontSize: 13, fontWeight: 300,
+                fontSize: 15, fontWeight: 300,
                 color: 'rgba(10,10,10,0.45)', lineHeight: 1.65,
                 flex: 1,
               }}>
@@ -144,7 +144,7 @@ export default function Blog() {
               }}>
                 <div style={{ width: 20, height: 1, background: '#cc5500' }} />
                 <span style={{
-                  fontFamily: 'Cormorant SC, serif', fontSize: 8,
+                  fontFamily: 'Cormorant SC, serif', fontSize: 10,
                   letterSpacing: '0.28em', color: 'rgba(10,10,10,0.3)',
                 }}>
                   LER ARTIGO
