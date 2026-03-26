@@ -283,12 +283,12 @@ const CAPABILITIES = [
   { Icon: Award, label: 'Certificada', desc: 'CREA ativo, ART/RRT emitidas em cada obra, NR-18 e PCMAT em conformidade.' },
   { Icon: Shield, label: 'Habilitada', desc: 'Certidões em dia para licitações municipais, estaduais e federais.' },
   { Icon: Users, label: 'Equipe Sênior', desc: 'Engenheiros e mestres de obra com mais de 15 anos de experiência acumulada.' },
-  { Icon: MapPin, label: 'Regional', desc: 'Atuação em São José do Rio Preto e mais de 8 municípios da região noroeste de SP.' },
+  { Icon: MapPin, label: 'Nacional', desc: 'Atendemos prefeituras, órgãos estaduais e federais e clientes privados em todo o Brasil.' },
 ];
 
-const CITIES = [
-  'São José do Rio Preto', 'Mirassol', 'Bady Bassitt', 'Cedral',
-  'Mirassolândia', 'Palestina', 'José Bonifácio', 'Uchoa',
+const REGIONS = [
+  'São Paulo', 'Minas Gerais', 'Goiás', 'Mato Grosso',
+  'Paraná', 'Mato Grosso do Sul', 'Tocantins', 'Bahia',
 ];
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
@@ -412,7 +412,7 @@ export default function AboutPage() {
                   A RTL Construção de Edifícios Ltda nasceu em {COMPANY.founded} com uma missão clara: entregar obras com excelência técnica, dentro do prazo e com total transparência.
                 </p>
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'rgba(10,10,10,0.55)', fontWeight: 300, lineHeight: 1.75 }}>
-                  Fundada por engenheiros e gestores com mais de 15 anos de experiência, a empresa se estabeleceu rapidamente como referência em qualidade e confiança na região de São José do Rio Preto.
+                  Fundada por engenheiros e gestores com mais de 15 anos de experiência, a empresa se estabeleceu rapidamente como referência em qualidade e confiança em todo o território nacional.
                 </p>
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'rgba(10,10,10,0.55)', fontWeight: 300, lineHeight: 1.75 }}>
                   Atuamos em obras públicas e privadas — da licitação governamental à edificação residencial — sempre priorizando segurança, técnica e satisfação do cliente.
@@ -535,15 +535,15 @@ export default function AboutPage() {
             <div ref={regionRef} style={{ opacity: 0 }}>
               <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 11, letterSpacing: '0.3em', color: '#cc5500', marginBottom: 18 }}>ÁREA DE ATUAÇÃO</p>
               <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(34px, 4vw, 52px)', fontWeight: 300, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.05, marginBottom: 24 }}>
-                Noroeste de SP —<br /><span style={{ color: '#cc5500' }}>8+ municípios</span>
+                Brasil inteiro —<br /><span style={{ color: '#cc5500' }}>sem fronteiras</span>
               </h2>
               <div style={{ width: 48, height: 2, background: '#cc5500', marginBottom: 28 }} />
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 14, color: 'rgba(255,255,255,0.45)', fontWeight: 300, lineHeight: 1.75, maxWidth: 400, marginBottom: 36 }}>
-                Com sede em São José do Rio Preto, a RTL atende prefeituras, órgãos estaduais e clientes privados em toda a região noroeste paulista — do contrato à entrega final.
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 16, color: 'rgba(255,255,255,0.45)', fontWeight: 300, lineHeight: 1.75, maxWidth: 400, marginBottom: 36 }}>
+                Com sede em São José do Rio Preto — SP, a RTL atende prefeituras, órgãos estaduais e federais e clientes privados em todo o território nacional — do contrato à entrega final.
               </p>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-                {CITIES.map((city) => (
+                {REGIONS.map((city) => (
                   <span
                     key={city}
                     className="city-tag"
@@ -575,10 +575,10 @@ export default function AboutPage() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                   {[
                     { label: 'Sede', value: 'São José do Rio Preto — SP' },
-                    { label: 'Municípios', value: '8+ cidades atendidas' },
+                    { label: 'Cobertura', value: 'Todo o território nacional' },
                     { label: 'Modalidades', value: 'Municipal · Estadual · Federal' },
-                    { label: 'Raio de atuação', value: 'até 150 km da sede' },
-                    { label: 'Contratos ativos', value: 'Via licitação pública e privada' },
+                    { label: 'Mobilização', value: 'Equipe deslocável a qualquer estado' },
+                    { label: 'Contratos', value: 'Licitação pública e contrato privado' },
                   ].map(({ label, value }, i) => (
                     <div
                       key={label}
