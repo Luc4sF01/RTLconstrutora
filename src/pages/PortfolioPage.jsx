@@ -24,12 +24,12 @@ const SECTORS = [
   {
     title: 'Infraestrutura Viária',
     desc: 'Pontes, viadutos, pavimentação asfáltica e drenagem urbana.',
-    image: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80',
+    image: '/images/Infraestrutura-Viária.jpg',
   },
   {
     title: 'Edificações Privadas',
     desc: 'Residenciais, comerciais e industriais com gestão técnica completa.',
-    image: 'https://images.unsplash.com/photo-1590534247854-e97d5e3feef6?w=800&q=80',
+    image: '/images/Edificações-Privadas.jpg',
   },
   {
     title: 'Reformas e Revitalizações',
