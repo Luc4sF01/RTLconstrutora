@@ -450,7 +450,7 @@ export default function AboutPage() {
               >
                 <img
                   ref={storyImgRef}
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80"
+                  src="/images/sobre.jpg"
                   alt="Obra RTL"
                   style={{ width: '100%', height: '130%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
                   loading="lazy"

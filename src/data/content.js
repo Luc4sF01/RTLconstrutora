@@ -25,11 +25,11 @@ export const COMPANY = {
 };
 
 export const IMAGES = {
-  heroBg: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80',
-  about:  'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80',
-  blog1:  'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80',
-  blog2:  'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80',
-  blog3:  'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80',
+  heroBg: '/images/hero.jpg',
+  about:  '/images/sobre.jpg',
+  blog1:  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',
+  blog2:  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
+  blog3:  '/images/blog-pontes.jpg',
 };
 
 // Estatísticas — valores conservadores e defensáveis
@@ -80,32 +80,31 @@ export const SERVICES = [
   },
 ];
 
-// Portfólio — projetos representativos com dados plausíveis para a região
 export const PORTFOLIO = [
   {
     id: 1,
-    title: 'Escola Municipal Prof. Antônio Faria',
-    city: 'Mirassol - SP',
+    title: 'Reforma de Escola Municipal',
+    city: 'Obra Institucional',
     category: 'Institucional',
-    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80',
-    description: 'Reforma geral e ampliação da escola municipal, com substituição da cobertura, adequação de acessibilidade (NBR 9050), novas salas de aula e quadra poliesportiva coberta.',
+    image: '/images/portfolio-escola.jpg',
+    description: 'Reforma geral e ampliação de escola municipal, com substituição da cobertura, adequação de acessibilidade (NBR 9050), novas salas de aula e quadra poliesportiva coberta.',
     year: '2024',
     area: '2.800 m²',
   },
   {
     id: 2,
-    title: 'Ponte sobre o Córrego Canela',
-    city: 'Cedral - SP',
+    title: 'Ponte de Concreto Armado',
+    city: 'Obra de Infraestrutura',
     category: 'Infraestrutura',
-    image: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80',
+    image: '/images/portfolio-ponte.jpg',
     description: 'Construção de obra de arte especial em concreto armado, com extensão de 24 metros, fundação em estacas hélice contínua e tabuleiro pré-moldado. Obra financiada por convênio estadual.',
     year: '2024',
     area: '24 m ext.',
   },
   {
     id: 3,
-    title: 'UBS Jardim Europa',
-    city: 'São José do Rio Preto - SP',
+    title: 'Unidade Básica de Saúde',
+    city: 'Obra Institucional',
     category: 'Institucional',
     image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80',
     description: 'Construção de Unidade Básica de Saúde padrão MS/Tipo 1, com consultórios, sala de vacina, farmácia, administração e acessibilidade total. Obra entregue via licitação pública.',
@@ -114,18 +113,18 @@ export const PORTFOLIO = [
   },
   {
     id: 4,
-    title: 'Pavimentação e Drenagem — Bairro Novo',
-    city: 'Bady Bassitt - SP',
+    title: 'Pavimentação e Drenagem Urbana',
+    city: 'Obra Viária',
     category: 'Infraestrutura',
-    image: 'https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=800&q=80',
-    description: 'Execução de 3.200 metros lineares de pavimentação asfáltica CBUQ, galeria de drenagem pluvial, guias, sarjetas e sinalização horizontal. Contrato firmado com a Prefeitura Municipal.',
+    image: '/images/portfolio-pavimentacao.jpg',
+    description: 'Execução de 3.200 metros lineares de pavimentação asfáltica CBUQ, galeria de drenagem pluvial, guias, sarjetas e sinalização horizontal.',
     year: '2024',
     area: '3.200 m',
   },
   {
     id: 5,
-    title: 'Sede da Secretaria Municipal de Obras',
-    city: 'Mirassol - SP',
+    title: 'Sede Administrativa Municipal',
+    city: 'Obra Governamental',
     category: 'Governamental',
     image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80',
     description: 'Construção de nova sede administrativa para secretaria municipal, com área técnica, garagem para maquinário, almoxarifado e sala de reuniões. Projeto executivo desenvolvido pela RTL.',
@@ -134,10 +133,10 @@ export const PORTFOLIO = [
   },
   {
     id: 6,
-    title: 'Condomínio Residencial Alto do Cedro',
-    city: 'São José do Rio Preto - SP',
+    title: 'Condomínio Residencial Horizontal',
+    city: 'Obra Privada',
     category: 'Residencial',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
+    image: '/images/portfolio-condominio.jpg',
     description: 'Condomínio horizontal fechado com 48 lotes, infraestrutura completa de água, esgoto, energia e pavimentação interna, portaria e área de lazer.',
     year: '2024',
     area: '38.000 m²',

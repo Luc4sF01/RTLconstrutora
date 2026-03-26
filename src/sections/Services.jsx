@@ -7,12 +7,12 @@ import { SERVICES } from '../data/content';
 gsap.registerPlugin(ScrollTrigger);
 
 const SERVICE_IMAGES = [
-  'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80', // obras públicas / escola
-  'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80',   // infraestrutura / ponte
-  'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80', // edificação institucional / saúde
-  'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80', // construção civil
-  'https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=800&q=80', // reforma / pavimentação
-  'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80', // gerenciamento / escritório
+  '/images/portfolio-escola.jpg',       // obras públicas
+  '/images/portfolio-ponte.jpg',        // infraestrutura viária
+  'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80', // edificações institucionais
+  '/images/hero.jpg',                   // construção civil
+  '/images/portfolio-pavimentacao.jpg', // reformas e revitalizações
+  '/images/sobre.jpg',                  // gerenciamento de obras
 ];
 
 export default function Services({ hideHeader = false }) {

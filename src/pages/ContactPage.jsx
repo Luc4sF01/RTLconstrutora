@@ -188,7 +188,7 @@ export default function ContactPage() {
         <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '48%', zIndex: 1 }}>
           <div style={{
             position: 'absolute', inset: 0,
-            backgroundImage: `url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80)`,
+            backgroundImage: `url(/images/hero.jpg)`,
             backgroundSize: 'cover', backgroundPosition: 'center',
           }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 55%, rgba(10,10,10,0.4))' }} />
