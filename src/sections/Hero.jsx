@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -85,7 +85,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       style={{
-        background: '#0A0A0A',
+        background: '#0F2340',
         minHeight: '100vh',
         overflow: 'hidden',
         position: 'relative',
@@ -155,7 +155,7 @@ export default function Hero() {
                   fontWeight: 300,
                   letterSpacing: '-0.025em',
                   color: i === 2 ? '#cc5500' : '#ffffff',
-                  fontStyle: i === 2 ? 'italic' : 'normal',
+                  fontStyle: 'normal',
                   lineHeight: 0.93,
                 }}
               >

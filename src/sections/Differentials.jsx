@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { DIFFERENTIALS } from '../data/content';
@@ -80,7 +80,7 @@ export default function Differentials() {
       style={{ background: '#F7F4EF', overflow: 'hidden' }}
     >
       {/* Dark header band */}
-      <div style={{ background: '#0A0A0A', padding: '80px clamp(24px,6vw,80px) 60px' }}>
+      <div style={{ background: '#0F2340', padding: '80px clamp(24px,6vw,80px) 60px' }}>
         <div className="max-w-7xl mx-auto">
           <div
             ref={titleRef}
@@ -110,7 +110,7 @@ export default function Differentials() {
                 }}
               >
                 Por que<br />
-                <em style={{ color: '#cc5500', fontStyle: 'italic' }}>escolher a RTL?</em>
+                <span style={{ color: '#cc5500' }}>escolher a RTL?</span>
               </h2>
             </div>
             <p
@@ -232,7 +232,6 @@ export default function Differentials() {
                     style={{
                       fontFamily: 'Cormorant Garamond, serif',
                       fontSize: 'clamp(14px, 2vw, 20px)',
-                      fontStyle: 'italic',
                       color: isHovered ? '#cc5500' : 'rgba(10,10,10,0.12)',
                       letterSpacing: '0.02em',
                       transition: 'color 0.35s',

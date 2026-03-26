@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { MapPin, Calendar, Maximize2, ArrowRight } from 'lucide-react';
@@ -55,7 +55,7 @@ function ProcessSection() {
   }, []);
 
   return (
-    <section ref={ref} style={{ background: '#0A0A0A', padding: '110px 0' }}>
+    <section ref={ref} style={{ background: '#0F2340', padding: '110px 0' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-16">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
           <div>
@@ -63,7 +63,7 @@ function ProcessSection() {
               METODOLOGIA
             </p>
             <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(34px, 4vw, 54px)', fontWeight: 300, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.05 }}>
-              Como cada obra<br /><em style={{ color: '#cc5500', fontStyle: 'italic' }}>é executada</em>
+              Como cada obra<br /><span style={{ color: '#cc5500' }}>é executada</span>
             </h2>
           </div>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, color: 'rgba(255,255,255,0.3)', fontWeight: 300, maxWidth: 280, lineHeight: 1.7 }}>
@@ -156,7 +156,7 @@ function SectorsSection() {
               SEGMENTOS
             </p>
             <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(34px, 4vw, 54px)', fontWeight: 300, color: '#0A0A0A', letterSpacing: '-0.01em', lineHeight: 1.05 }}>
-              Tipos de obra<br /><em style={{ color: '#cc5500', fontStyle: 'italic' }}>que executamos</em>
+              Tipos de obra<br /><span style={{ color: '#cc5500' }}>que executamos</span>
             </h2>
           </div>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, color: 'rgba(10,10,10,0.4)', fontWeight: 300, maxWidth: 280, lineHeight: 1.7 }}>
@@ -260,7 +260,7 @@ export default function PortfolioPage() {
               }}
             >
               Portfólio de<br />
-              <em style={{ color: '#cc5500', fontStyle: 'italic' }}>Projetos</em>
+              <span style={{ color: '#cc5500' }}>Projetos</span>
             </h1>
             <div style={{ textAlign: 'right' }}>
               <span
@@ -293,7 +293,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Stats strip */}
-      <section style={{ background: '#0A0A0A', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+      <section style={{ background: '#0F2340', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="grid grid-cols-2 lg:grid-cols-4">
             {STATS.map((stat, i) => (
@@ -511,7 +511,7 @@ export default function PortfolioPage() {
       <SectorsSection />
 
       {/* CTA */}
-      <section style={{ padding: '120px 0', background: '#0A0A0A' }}>
+      <section style={{ padding: '120px 0', background: '#0F2340' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16 text-center">
           <p
             style={{

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CheckCircle2 } from 'lucide-react';
@@ -55,7 +55,7 @@ function RTLBrand() {
     <div
       ref={brandRef}
       style={{
-        background: '#0A0A0A',
+        background: '#0F2340',
         padding: 'clamp(72px,9vh,110px) clamp(24px,6vw,80px)',
         display: 'flex',
         flexDirection: 'column',
@@ -123,7 +123,7 @@ function RTLBrand() {
       {/* Tagline */}
       <p
         className="brand-tagline"
-        style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.4vw, 17px)', fontStyle: 'italic', color: 'rgba(204,85,0,0.65)', textAlign: 'center', marginTop: 10, fontWeight: 300, opacity: 0 }}
+        style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(14px, 1.4vw, 17px)', color: 'rgba(204,85,0,0.65)', textAlign: 'center', marginTop: 10, fontWeight: 300, opacity: 0 }}
       >
         "Construir com excelência, entregar com confiança."
       </p>
@@ -187,7 +187,7 @@ export default function About() {
             <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 10, letterSpacing: '0.38em', color: '#cc5500', marginBottom: 18 }}>SOBRE A RTL</p>
             <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(32px, 3.8vw, 50px)', fontWeight: 300, color: '#0A0A0A', lineHeight: 1.1, letterSpacing: '-0.01em', marginBottom: 18 }}>
               Obras públicas e privadas<br />com{' '}
-              <em style={{ color: '#cc5500', fontStyle: 'italic' }}>excelência técnica</em>
+              <span style={{ color: '#cc5500' }}>excelência técnica</span>
             </h2>
             <div style={{ width: 44, height: 2, background: '#cc5500', marginBottom: 24 }} />
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'rgba(10,10,10,0.55)', fontWeight: 300, lineHeight: 1.7, marginBottom: 28, maxWidth: 420 }}>
@@ -223,7 +223,7 @@ export default function About() {
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 9, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.18em', marginTop: 4 }}>FUNDAÇÃO</p>
               </div>
             </div>
-            <div className="hidden lg:block" style={{ position: 'absolute', bottom: -12, left: -12, width: 18, height: 18, background: '#0A0A0A' }} />
+            <div className="hidden lg:block" style={{ position: 'absolute', bottom: -12, left: -12, width: 18, height: 18, background: '#0F2340' }} />
           </div>
 
         </div>

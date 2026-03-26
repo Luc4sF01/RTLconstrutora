@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,12 +7,12 @@ import { SERVICES } from '../data/content';
 gsap.registerPlugin(ScrollTrigger);
 
 const SERVICE_IMAGES = [
-  'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80', // obras públicas / governo
-  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',   // infraestrutura / ponte
-  'https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=800&q=80', // edificação institucional
+  'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80', // obras públicas / escola
+  'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80',   // infraestrutura / ponte
+  'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80', // edificação institucional / saúde
   'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80', // construção civil
-  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',   // reforma / revitalização
-  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80', // gerenciamento
+  'https://images.unsplash.com/photo-1621155346337-1d19476ba7d6?w=800&q=80', // reforma / pavimentação
+  'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80', // gerenciamento / escritório
 ];
 
 export default function Services({ hideHeader = false }) {
@@ -148,7 +148,7 @@ export default function Services({ hideHeader = false }) {
               position: 'relative',
               zIndex: 1,
               transition: 'background 0.35s',
-              background: hovered === i ? '#0A0A0A' : 'transparent',
+              background: hovered === i ? '#0F2340' : 'transparent',
             }}
           >
             <div
@@ -226,7 +226,7 @@ export default function Services({ hideHeader = false }) {
       {/* Bottom strip */}
       <div
         style={{
-          background: '#0A0A0A',
+          background: '#0F2340',
           padding: '28px clamp(24px,6vw,80px)',
           display: 'flex',
           alignItems: 'center',

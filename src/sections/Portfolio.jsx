@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { gsap } from 'gsap';
@@ -32,7 +32,7 @@ export default function Portfolio() {
     : PORTFOLIO.filter((p) => p.category === activeFilter);
 
   return (
-    <section id="obras" style={{ padding: '120px 0', background: '#0A0A0A' }}>
+    <section id="obras" style={{ padding: '120px 0', background: '#FAFAF8' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-16">
 
         {/* Header */}
@@ -65,13 +65,13 @@ export default function Portfolio() {
                 fontFamily: 'Cormorant Garamond, serif',
                 fontSize: 'clamp(36px, 4.5vw, 56px)',
                 fontWeight: 300,
-                color: '#fff',
+                color: '#0F2340',
                 letterSpacing: '-0.01em',
                 lineHeight: 1.05,
               }}
             >
               Projetos em<br />
-              <em style={{ color: '#cc5500', fontStyle: 'italic' }}>destaque</em>
+              <span style={{ color: '#cc5500' }}>destaque</span>
             </h2>
           </div>
 
@@ -87,16 +87,16 @@ export default function Portfolio() {
                   letterSpacing: '0.08em',
                   padding: '8px 18px',
                   background: activeFilter === f ? '#cc5500' : 'transparent',
-                  color: activeFilter === f ? '#fff' : 'rgba(255,255,255,0.35)',
-                  border: `1px solid ${activeFilter === f ? '#cc5500' : 'rgba(255,255,255,0.1)'}`,
+                  color: activeFilter === f ? '#fff' : 'rgba(15,35,64,0.4)',
+                  border: `1px solid ${activeFilter === f ? '#cc5500' : 'rgba(15,35,64,0.15)'}`,
                   cursor: 'pointer',
                   transition: 'all 0.25s',
                 }}
                 onMouseEnter={(e) => {
-                  if (activeFilter !== f) e.currentTarget.style.color = '#fff';
+                  if (activeFilter !== f) e.currentTarget.style.color = '#0F2340';
                 }}
                 onMouseLeave={(e) => {
-                  if (activeFilter !== f) e.currentTarget.style.color = 'rgba(255,255,255,0.35)';
+                  if (activeFilter !== f) e.currentTarget.style.color = 'rgba(15,35,64,0.4)';
                 }}
               >
                 {f}
@@ -115,7 +115,7 @@ export default function Portfolio() {
             transition={{ duration: 0.3 }}
           >
             {/* Numbered horizontal list */}
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+            <div style={{ borderTop: '1px solid rgba(15,35,64,0.08)' }}>
               {filtered.map((item, i) => (
                 <motion.div
                   key={item.id}
@@ -127,9 +127,9 @@ export default function Portfolio() {
                   onMouseEnter={() => setHovered(item.id)}
                   onMouseLeave={() => setHovered(null)}
                   style={{
-                    borderBottom: '1px solid rgba(255,255,255,0.07)',
+                    borderBottom: '1px solid rgba(15,35,64,0.08)',
                     cursor: 'default',
-                    background: hovered === item.id ? 'rgba(255,255,255,0.03)' : 'transparent',
+                    background: hovered === item.id ? 'rgba(15,35,64,0.04)' : 'transparent',
                     transition: 'background 0.3s',
                     position: 'relative',
                     overflow: 'hidden',
@@ -149,7 +149,7 @@ export default function Portfolio() {
                         fontFamily: 'Cormorant Garamond, serif',
                         fontSize: 'clamp(14px, 1.8vw, 20px)',
                         fontWeight: 300,
-                        color: hovered === item.id ? '#cc5500' : 'rgba(255,255,255,0.15)',
+                        color: hovered === item.id ? '#cc5500' : 'rgba(15,35,64,0.15)',
                         minWidth: 40,
                         flexShrink: 0,
                         transition: 'color 0.3s',
@@ -188,7 +188,7 @@ export default function Portfolio() {
                           fontFamily: 'Cormorant Garamond, serif',
                           fontSize: 'clamp(18px, 2.5vw, 28px)',
                           fontWeight: 300,
-                          color: '#fff',
+                          color: '#0F2340',
                           letterSpacing: '-0.01em',
                           lineHeight: 1.1,
                           transition: 'color 0.3s',
@@ -203,7 +203,7 @@ export default function Portfolio() {
                         style={{
                           fontFamily: 'DM Sans, sans-serif',
                           fontSize: 11,
-                          color: 'rgba(255,255,255,0.3)',
+                          color: 'rgba(15,35,64,0.4)',
                           fontWeight: 300,
                           marginTop: 4,
                         }}
@@ -243,7 +243,7 @@ export default function Portfolio() {
                         style={{
                           fontFamily: 'DM Sans, sans-serif',
                           fontSize: 12,
-                          color: 'rgba(255,255,255,0.45)',
+                          color: 'rgba(15,35,64,0.45)',
                           fontWeight: 300,
                         }}
                       >
@@ -253,7 +253,7 @@ export default function Portfolio() {
                         style={{
                           fontFamily: 'DM Sans, sans-serif',
                           fontSize: 11,
-                          color: 'rgba(255,255,255,0.2)',
+                          color: 'rgba(15,35,64,0.2)',
                           fontWeight: 300,
                         }}
                       >
@@ -283,12 +283,12 @@ export default function Portfolio() {
                   fontFamily: 'Cormorant SC, serif',
                   fontSize: 11,
                   letterSpacing: '0.32em',
-                  color: 'rgba(255,255,255,0.4)',
+                  color: 'rgba(15,35,64,0.35)',
                   transition: 'color 0.3s',
                   textDecoration: 'none',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.4)')}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#0F2340')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(15,35,64,0.35)')}
               >
                 VER TODOS OS PROJETOS
                 <div style={{ width: 28, height: 1, background: 'currentColor' }} />

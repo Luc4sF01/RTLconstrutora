@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
 export default function LoadingScreen({ onComplete }) {
@@ -73,7 +73,7 @@ export default function LoadingScreen({ onComplete }) {
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: '#0A0A0A',
+        background: '#0F2340',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -171,7 +171,7 @@ export default function BlogPostPage() {
 
           {/* CTA */}
           <div style={{
-            background: '#0A0A0A', padding: '36px 40px',
+            background: '#0F2340', padding: '36px 40px',
             display: 'flex', flexDirection: 'column', gap: 16,
           }}>
             <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 9, letterSpacing: '0.3em', color: '#cc5500' }}>
@@ -183,7 +183,7 @@ export default function BlogPostPage() {
               fontWeight: 300, color: '#fff', lineHeight: 1.1,
             }}>
               Tem um projeto de obra pública?<br />
-              <em style={{ color: '#cc5500' }}>Entre em contato.</em>
+              <span style={{ color: '#cc5500' }}>Entre em contato.</span>
             </p>
             <div style={{ marginTop: 8 }}>
               <Link

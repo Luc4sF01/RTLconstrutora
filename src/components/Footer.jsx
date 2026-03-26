@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Linkedin, MessageCircle } from 'lucide-react';
 import { COMPANY, SERVICES } from '../data/content';
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#0A0A0A', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+    <footer style={{ background: '#0F2340', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-16 py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
@@ -70,7 +70,7 @@ export default function ServicesPage() {
               }}
             >
               Nossos<br />
-              <em style={{ color: '#cc5500', fontStyle: 'italic' }}>Serviços</em>
+              <span style={{ color: '#cc5500' }}>Serviços</span>
             </h1>
             <p
               style={{
@@ -92,7 +92,7 @@ export default function ServicesPage() {
       <Services hideHeader />
 
       {/* CTA */}
-      <section style={{ padding: '120px 0', background: '#0A0A0A' }}>
+      <section style={{ padding: '120px 0', background: '#0F2340' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16 text-center">
           <p
             style={{

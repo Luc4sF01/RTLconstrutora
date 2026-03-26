@@ -33,20 +33,20 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ padding: '140px 0', background: '#0A0A0A', overflow: 'hidden' }}>
+    <section ref={sectionRef} style={{ padding: '140px 0', background: '#F4EFE6', overflow: 'hidden' }}>
       <div className="max-w-5xl mx-auto px-6 lg:px-12">
 
         {/* Header */}
         <div ref={titleRef} className="text-center mb-16 opacity-0">
           <p className="font-cormorantSC text-[11px] tracking-[0.3em] mb-4" style={{ color: '#cc5500' }}>DEPOIMENTOS</p>
-          <h2 className="font-cormorant font-light text-white" style={{ fontSize: 'clamp(36px, 4vw, 52px)', letterSpacing: '-0.01em' }}>
+          <h2 className="font-cormorant font-light" style={{ fontSize: 'clamp(36px, 4vw, 52px)', letterSpacing: '-0.01em', color: '#0F2340' }}>
             O que nossos clientes dizem
           </h2>
         </div>
 
         {/* Big quote mark */}
         <div className="text-center mb-0" style={{ marginBottom: '-40px', position: 'relative', zIndex: 0 }}>
-          <span className="font-cormorant select-none" style={{ fontSize: '200px', color: 'rgba(204,85,0,0.06)', lineHeight: 1, fontStyle: 'italic' }}>"</span>
+          <span className="font-cormorant select-none" style={{ fontSize: '200px', color: 'rgba(204,85,0,0.09)', lineHeight: 1 }}>"</span>
         </div>
 
         <div ref={swiperRef} className="opacity-0 relative z-10">
@@ -67,14 +67,14 @@ export default function Testimonials() {
                   </div>
                   <p
                     className="font-cormorant italic font-light leading-relaxed mb-10 max-w-2xl"
-                    style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', color: 'rgba(255,255,255,0.85)' }}
+                    style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', color: 'rgba(15,35,64,0.7)' }}
                   >
                     "{t.text}"
                   </p>
                   <div className="flex flex-col items-center gap-3">
-                    <div style={{ width: 32, height: 1, background: 'rgba(204,85,0,0.45)' }} />
-                    <p className="font-dm font-medium text-sm text-white">{t.name}</p>
-                    <p className="font-dm font-light text-xs" style={{ color: 'rgba(255,255,255,0.3)', letterSpacing: '0.06em' }}>{t.role}</p>
+                    <div style={{ width: 32, height: 1, background: 'rgba(204,85,0,0.5)' }} />
+                    <p className="font-dm font-medium text-sm" style={{ color: '#0F2340' }}>{t.name}</p>
+                    <p className="font-dm font-light text-xs" style={{ color: 'rgba(15,35,64,0.4)', letterSpacing: '0.06em' }}>{t.role}</p>
                   </div>
                 </div>
               </SwiperSlide>

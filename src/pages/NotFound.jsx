@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center" style={{ background: '#0a0a0a' }}>
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{ background: '#0F2340' }}>
       <p className="font-cormorantSC text-[12px] tracking-[0.25em] mb-4" style={{ color: '#cc5500' }}>
         ERRO 404
       </p>

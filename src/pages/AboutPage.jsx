@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CheckCircle2, Award, Shield, Users, MapPin } from 'lucide-react';
@@ -47,7 +47,7 @@ function RTLBrand() {
     <div
       ref={ref}
       style={{
-        background: '#0A0A0A',
+        background: '#0F2340',
         padding: 'clamp(80px,10vh,120px) clamp(24px,6vw,80px)',
         display: 'flex',
         flexDirection: 'column',
@@ -388,7 +388,7 @@ export default function AboutPage() {
             }}
           >
             Sobre a<br />
-            <em style={{ color: '#cc5500', fontStyle: 'italic' }}>RTL Construção</em>
+            <span style={{ color: '#cc5500' }}>RTL Construção</span>
           </h1>
         </div>
       </section>
@@ -404,7 +404,7 @@ export default function AboutPage() {
             <div ref={storyLeftRef} style={{ opacity: 0 }}>
               <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 11, letterSpacing: '0.3em', color: '#cc5500', marginBottom: 18 }}>NOSSA HISTÓRIA</p>
               <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(34px, 4vw, 52px)', fontWeight: 300, color: '#0A0A0A', lineHeight: 1.05, letterSpacing: '-0.01em', marginBottom: 20 }}>
-                Nascemos para construir<br />com <em style={{ color: '#cc5500', fontStyle: 'italic' }}>propósito</em>
+                Nascemos para construir<br />com <span style={{ color: '#cc5500' }}>propósito</span>
               </h2>
               <div style={{ width: 52, height: 2, background: '#cc5500', marginBottom: 28 }} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
@@ -465,7 +465,7 @@ export default function AboutPage() {
 
       {/* ── Animated Counters + 3D ── */}
       <section
-        style={{ background: '#0A0A0A', padding: '120px 0', position: 'relative', overflow: 'hidden' }}
+        style={{ background: '#0F2340', padding: '120px 0', position: 'relative', overflow: 'hidden' }}
       >
         {/* 3D decorative canvas */}
         <div style={{ position: 'absolute', right: '5%', top: '50%', transform: 'translateY(-50%)', width: 'clamp(240px, 30vw, 420px)', height: 'clamp(240px, 30vw, 420px)', opacity: 0.7 }}>
@@ -477,7 +477,7 @@ export default function AboutPage() {
             EM NÚMEROS
           </p>
           <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(34px, 4vw, 54px)', fontWeight: 300, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.05, marginBottom: 80 }}>
-            Resultados que<br /><em style={{ color: '#cc5500', fontStyle: 'italic' }}>falam por si</em>
+            Resultados que<br /><span style={{ color: '#cc5500' }}>falam por si</span>
           </h2>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12" style={{ maxWidth: 760 }}>
@@ -528,14 +528,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── Área de Atuação (NEW) ── */}
-      <section style={{ background: '#0A0A0A', padding: '110px 0', overflow: 'hidden' }}>
+      <section style={{ background: '#0F2340', padding: '110px 0', overflow: 'hidden' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
             <div ref={regionRef} style={{ opacity: 0 }}>
               <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 11, letterSpacing: '0.3em', color: '#cc5500', marginBottom: 18 }}>ÁREA DE ATUAÇÃO</p>
               <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(34px, 4vw, 52px)', fontWeight: 300, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.05, marginBottom: 24 }}>
-                Noroeste de SP —<br /><em style={{ color: '#cc5500', fontStyle: 'italic' }}>8+ municípios</em>
+                Noroeste de SP —<br /><span style={{ color: '#cc5500' }}>8+ municípios</span>
               </h2>
               <div style={{ width: 48, height: 2, background: '#cc5500', marginBottom: 28 }} />
               <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 14, color: 'rgba(255,255,255,0.45)', fontWeight: 300, lineHeight: 1.75, maxWidth: 400, marginBottom: 36 }}>

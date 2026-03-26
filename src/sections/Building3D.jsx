@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useRef } from 'react';
+﻿import { Suspense, lazy, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useMediaQuery } from '../hooks/useMediaQuery';
@@ -52,7 +52,7 @@ export default function Building3D() {
       ref={sectionRef}
       id="section-3d"
       style={{
-        background: '#0A0A0A',
+        background: '#0F2340',
         height: '100vh',
         minHeight: 600,
         overflow: 'hidden',
@@ -96,7 +96,7 @@ export default function Building3D() {
         style={{
           position: 'absolute',
           inset: 0,
-          background: '#0A0A0A',
+          background: '#0F2340',
           zIndex: 5,
           pointerEvents: 'none',
         }}
@@ -125,7 +125,7 @@ export default function Building3D() {
         ) : (
           <Suspense
             fallback={
-              <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, background: '#0A0A0A' }}>
+              <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, background: '#0F2340' }}>
                 <div style={{ width: 40, height: 40, borderRadius: '50%', border: '1px solid rgba(204,85,0,0.2)', borderTopColor: '#cc5500', animation: 'spin 1s linear infinite' }} />
                 <span style={{ fontFamily: 'Cormorant SC, serif', fontSize: 9, letterSpacing: '0.35em', color: 'rgba(255,255,255,0.2)' }}>CARREGANDO</span>
               </div>

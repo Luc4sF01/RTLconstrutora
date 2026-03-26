@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -55,7 +55,7 @@ export default function Blog() {
                 letterSpacing: '-0.01em', lineHeight: 1.05,
               }}>
                 Artigos e<br />
-                <em style={{ color: '#cc5500', fontStyle: 'italic' }}>conhecimento técnico</em>
+                <span style={{ color: '#cc5500' }}>conhecimento técnico</span>
               </h2>
             </div>
             <p style={{
