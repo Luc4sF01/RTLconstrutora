@@ -1,10 +1,9 @@
 import { useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Loader2 } from 'lucide-react';
+import { MapPin, Phone } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { sendEmail } from '../utils/emailjs';
 import { COMPANY } from '../data/content';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,7 +23,7 @@ const INPUT = {
 };
 
 export default function Contact() {
-  const [status, setStatus] = useState('idle');
+  const [sent, setSent] = useState(false);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -41,17 +40,22 @@ export default function Contact() {
     return () => ctx.revert();
   }, []);
 
-  const onSubmit = async (data) => {
-    setStatus('loading');
-    try {
-      await sendEmail(data);
-      setStatus('success');
-      reset();
-      setTimeout(() => setStatus('idle'), 5000);
-    } catch {
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
-    }
+  const onSubmit = (data) => {
+    const lines = [
+      `Olá! Vim pelo site da RTL.`,
+      ``,
+      `*Nome:* ${data.name}`,
+      `*Telefone:* ${data.phone}`,
+      data.obraType ? `*Tipo de obra:* ${data.obraType}` : null,
+      ``,
+      `*Mensagem:* ${data.message}`,
+    ].filter(l => l !== null).join('\n');
+
+    const url = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(lines)}`;
+    window.open(url, '_blank');
+    setSent(true);
+    reset();
+    setTimeout(() => setSent(false), 6000);
   };
 
   const onFocus = (e) => (e.target.style.borderColor = '#cc5500');
@@ -77,7 +81,6 @@ export default function Contact() {
               {[
                 { Icon: MapPin, content: `${COMPANY.address.street}\n${COMPANY.address.neighborhood} — CEP ${COMPANY.address.cep}\n${COMPANY.address.city}` },
                 { Icon: Phone, content: COMPANY.phone, href: `tel:${COMPANY.phone}` },
-                { Icon: Mail, content: COMPANY.email, href: `mailto:${COMPANY.email}` },
               ].map(({ Icon, content, href }, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="w-9 h-9 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'rgba(204,85,0,0.08)' }}>
@@ -115,23 +118,14 @@ export default function Contact() {
                   placeholder="Nome completo *" style={INPUT} onFocus={onFocus} onBlur={onBlur} />
                 {errors.name && <p className="font-dm text-xs mt-1" style={{ color: '#cc5500' }}>{errors.name.message}</p>}
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <input {...register('phone', { required: 'Telefone obrigatório' })}
-                    placeholder="Telefone *" style={INPUT} onFocus={onFocus} onBlur={onBlur} />
-                  {errors.phone && <p className="font-dm text-xs mt-1" style={{ color: '#cc5500' }}>{errors.phone.message}</p>}
-                </div>
-                <div>
-                  <input {...register('email', {
-                    required: 'Email obrigatório',
-                    pattern: { value: /^\S+@\S+\.\S+$/, message: 'Email inválido' },
-                  })} placeholder="Email *" style={INPUT} onFocus={onFocus} onBlur={onBlur} />
-                  {errors.email && <p className="font-dm text-xs mt-1" style={{ color: '#cc5500' }}>{errors.email.message}</p>}
-                </div>
+              <div>
+                <input {...register('phone', { required: 'Telefone obrigatório' })}
+                  placeholder="Telefone *" style={INPUT} onFocus={onFocus} onBlur={onBlur} />
+                {errors.phone && <p className="font-dm text-xs mt-1" style={{ color: '#cc5500' }}>{errors.phone.message}</p>}
               </div>
               <select {...register('obraType')} style={{ ...INPUT, cursor: 'pointer' }} onFocus={onFocus} onBlur={onBlur}>
                 <option value="" style={{ background: '#fff' }}>Tipo de obra</option>
-                {['Residencial', 'Industrial', 'Reforma', 'Incorporação', 'Outro'].map(o => (
+                {['Obra Pública', 'Infraestrutura Viária', 'Edificação Institucional', 'Construção Civil', 'Reforma / Revitalização', 'Outro'].map(o => (
                   <option key={o} value={o} style={{ background: '#fff' }}>{o}</option>
                 ))}
               </select>
@@ -143,22 +137,17 @@ export default function Contact() {
                   style={{ ...INPUT, resize: 'vertical' }} onFocus={onFocus} onBlur={onBlur} />
                 {errors.message && <p className="font-dm text-xs mt-1" style={{ color: '#cc5500' }}>{errors.message.message}</p>}
               </div>
-              <button type="submit" disabled={status === 'loading'}
+              <button type="submit"
                 className="w-full flex items-center justify-center gap-3 font-dm text-sm py-4 rounded-sm transition-all duration-300"
-                style={{ background: '#cc5500', color: '#fff', cursor: status === 'loading' ? 'not-allowed' : 'pointer' }}
-                onMouseEnter={(e) => { if (status !== 'loading') e.currentTarget.style.background = '#b34a00'; }}
-                onMouseLeave={(e) => { if (status !== 'loading') e.currentTarget.style.background = '#cc5500'; }}
+                style={{ background: '#cc5500', color: '#fff', cursor: 'pointer' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#b34a00'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#cc5500'; }}
               >
-                {status === 'loading' ? <><Loader2 size={16} className="animate-spin" /> Enviando...</> : 'Enviar Mensagem'}
+                Enviar pelo WhatsApp
               </button>
-              {status === 'success' && (
+              {sent && (
                 <div className="text-center py-3 px-4 rounded-sm" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)' }}>
-                  <p className="font-dm font-light text-sm text-green-600">✓ Mensagem enviada! Entraremos em contato em breve.</p>
-                </div>
-              )}
-              {status === 'error' && (
-                <div className="text-center py-3 px-4 rounded-sm" style={{ background: 'rgba(204,85,0,0.06)', border: '1px solid rgba(204,85,0,0.2)' }}>
-                  <p className="font-dm font-light text-sm" style={{ color: '#cc5500' }}>Erro ao enviar. Tente novamente ou nos chame no WhatsApp.</p>
+                  <p className="font-dm font-light text-sm text-green-600">✓ WhatsApp aberto com sua mensagem. Aguarde nosso retorno!</p>
                 </div>
               )}
             </form>

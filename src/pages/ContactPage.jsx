@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useForm } from 'react-hook-form';
-import { Loader2 } from 'lucide-react';
-import { sendEmail } from '../utils/emailjs';
 import { COMPANY } from '../data/content';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -37,7 +35,7 @@ function Marquee() {
 
 // -- Main ------------------------------------------------------------------
 export default function ContactPage() {
-  const [status, setStatus] = useState('idle');
+  const [sent, setSent] = useState(false);
   const leftRef  = useRef(null);
   const wordsRef = useRef([]);
   const infoRef  = useRef(null);
@@ -46,17 +44,14 @@ export default function ContactPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Left panel curtain reveal
       gsap.fromTo(leftRef.current,
         { clipPath: 'inset(0 100% 0 0)' },
         { clipPath: 'inset(0 0% 0 0)', duration: 1.4, ease: 'power4.inOut', delay: 0.1 }
       );
-      // Title words stagger
       gsap.fromTo(wordsRef.current.filter(Boolean),
         { y: 64, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: 'power3.out', stagger: 0.11, delay: 0.65 }
       );
-      // Scroll reveals
       gsap.fromTo(infoRef.current,
         { opacity: 0, y: 40 },
         { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
@@ -71,17 +66,22 @@ export default function ContactPage() {
     return () => ctx.revert();
   }, []);
 
-  const onSubmit = async (data) => {
-    setStatus('loading');
-    try {
-      await sendEmail(data);
-      setStatus('success');
-      reset();
-      setTimeout(() => setStatus('idle'), 5000);
-    } catch {
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
-    }
+  const onSubmit = (data) => {
+    const lines = [
+      `Olá! Vim pelo site da RTL.`,
+      ``,
+      `*Nome:* ${data.name}`,
+      `*Telefone:* ${data.phone}`,
+      data.obraType ? `*Tipo de obra:* ${data.obraType}` : null,
+      ``,
+      `*Mensagem:* ${data.message}`,
+    ].filter(l => l !== null).join('\n');
+
+    const url = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(lines)}`;
+    window.open(url, '_blank');
+    setSent(true);
+    reset();
+    setTimeout(() => setSent(false), 6000);
   };
 
   const INPUT = {
@@ -172,15 +172,10 @@ export default function ContactPage() {
           </div>
 
           <div style={{ marginTop: 'clamp(28px,4vh,44px)', display: 'flex', gap: 36, flexWrap: 'wrap' }}>
-            {[
-              { label: 'TELEFONE', value: COMPANY.phone },
-              { label: 'EMAIL',    value: COMPANY.email  },
-            ].map(({ label, value }) => (
-              <div key={label}>
-                <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.32em', color: 'rgba(204,85,0,0.65)', marginBottom: 5 }}>{label}</p>
-                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.5)' }}>{value}</p>
-              </div>
-            ))}
+            <div>
+              <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.32em', color: 'rgba(204,85,0,0.65)', marginBottom: 5 }}>TELEFONE / WHATSAPP</p>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.5)' }}>{COMPANY.phone}</p>
+            </div>
           </div>
         </div>
 
@@ -251,7 +246,7 @@ export default function ContactPage() {
             {/* -- INFO -- */}
             <div ref={infoRef} style={{ opacity: 0 }}>
 
-              {/* Phone — editorial large */}
+              {/* Phone / WhatsApp */}
               <div style={{ marginBottom: 44 }}>
                 <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.36em', color: '#cc5500', marginBottom: 10 }}>
                   TELEFONE / WHATSAPP
@@ -270,23 +265,6 @@ export default function ContactPage() {
                   onMouseLeave={e => (e.currentTarget.style.color = '#fff')}
                 >
                   {COMPANY.phone}
-                </a>
-              </div>
-
-              {/* Email */}
-              <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 28, marginBottom: 28 }}>
-                <p style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.36em', color: '#cc5500', marginBottom: 9 }}>EMAIL</p>
-                <a
-                  href={`mailto:${COMPANY.email}`}
-                  style={{
-                    fontFamily: 'DM Sans, sans-serif', fontSize: 14,
-                    fontWeight: 300, color: 'rgba(255,255,255,0.45)',
-                    textDecoration: 'none', transition: 'color 0.3s',
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.color = '#cc5500')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
-                >
-                  {COMPANY.email}
                 </a>
               </div>
 
@@ -356,39 +334,23 @@ export default function ContactPage() {
                   {errors.name && <p style={{ fontFamily: 'DM Sans', fontSize: 11, color: '#cc5500', marginTop: 4 }}>{errors.name.message}</p>}
                 </div>
 
-                {/* Fields: Telefone + Email */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-                  <div>
-                    <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
-                      02 — TELEFONE
-                    </label>
-                    <input
-                      {...register('phone', { required: 'Obrigatório' })}
-                      placeholder="(00) 00000-0000"
-                      style={INPUT} onFocus={onFocus} onBlur={onBlur}
-                    />
-                    {errors.phone && <p style={{ fontFamily: 'DM Sans', fontSize: 11, color: '#cc5500', marginTop: 4 }}>{errors.phone.message}</p>}
-                  </div>
-                  <div>
-                    <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
-                      03 — EMAIL
-                    </label>
-                    <input
-                      {...register('email', {
-                        required: 'Obrigatório',
-                        pattern: { value: /^\S+@\S+\.\S+$/, message: 'Email inválido' },
-                      })}
-                      placeholder="seu@email.com"
-                      style={INPUT} onFocus={onFocus} onBlur={onBlur}
-                    />
-                    {errors.email && <p style={{ fontFamily: 'DM Sans', fontSize: 11, color: '#cc5500', marginTop: 4 }}>{errors.email.message}</p>}
-                  </div>
+                {/* Field: Telefone */}
+                <div>
+                  <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
+                    02 — TELEFONE
+                  </label>
+                  <input
+                    {...register('phone', { required: 'Telefone obrigatório' })}
+                    placeholder="(00) 00000-0000"
+                    style={INPUT} onFocus={onFocus} onBlur={onBlur}
+                  />
+                  {errors.phone && <p style={{ fontFamily: 'DM Sans', fontSize: 11, color: '#cc5500', marginTop: 4 }}>{errors.phone.message}</p>}
                 </div>
 
                 {/* Field: Tipo de obra */}
                 <div>
                   <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
-                    04 — TIPO DE OBRA
+                    03 — TIPO DE OBRA
                   </label>
                   <select
                     {...register('obraType')}
@@ -405,7 +367,7 @@ export default function ContactPage() {
                 {/* Field: Mensagem */}
                 <div>
                   <label style={{ fontFamily: 'Cormorant SC, serif', fontSize: 8, letterSpacing: '0.3em', color: 'rgba(204,85,0,0.6)', display: 'block', marginBottom: 4 }}>
-                    05 — MENSAGEM
+                    04 — MENSAGEM
                   </label>
                   <textarea
                     {...register('message', {
@@ -424,7 +386,6 @@ export default function ContactPage() {
                 <div style={{ paddingTop: 8 }}>
                   <button
                     type="submit"
-                    disabled={status === 'loading'}
                     style={{
                       background: 'transparent',
                       border: '1px solid rgba(204,85,0,0.4)',
@@ -433,31 +394,21 @@ export default function ContactPage() {
                       fontSize: 10,
                       letterSpacing: '0.32em',
                       padding: '16px 36px',
-                      cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+                      cursor: 'pointer',
                       display: 'inline-flex', alignItems: 'center', gap: 14,
                       transition: 'all 0.3s',
                     }}
-                    onMouseEnter={e => { if (status !== 'loading') { e.currentTarget.style.background = '#cc5500'; e.currentTarget.style.color = '#fff'; } }}
-                    onMouseLeave={e => { if (status !== 'loading') { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#cc5500'; } }}
+                    onMouseEnter={e => { e.currentTarget.style.background = '#cc5500'; e.currentTarget.style.color = '#fff'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#cc5500'; }}
                   >
-                    {status === 'loading'
-                      ? <><Loader2 size={14} className="animate-spin" /> ENVIANDO</>
-                      : <>ENVIAR MENSAGEM <div style={{ width: 20, height: 1, background: 'currentColor' }} /></>
-                    }
+                    ENVIAR PELO WHATSAPP <div style={{ width: 20, height: 1, background: 'currentColor' }} />
                   </button>
                 </div>
 
-                {status === 'success' && (
+                {sent && (
                   <div style={{ padding: '14px 18px', border: '1px solid rgba(34,197,94,0.2)', background: 'rgba(34,197,94,0.05)' }}>
                     <p style={{ fontFamily: 'DM Sans', fontSize: 13, fontWeight: 300, color: 'rgba(34,197,94,0.75)' }}>
-                      ✓ Mensagem enviada. Entraremos em contato em breve.
-                    </p>
-                  </div>
-                )}
-                {status === 'error' && (
-                  <div style={{ padding: '14px 18px', border: '1px solid rgba(204,85,0,0.18)', background: 'rgba(204,85,0,0.05)' }}>
-                    <p style={{ fontFamily: 'DM Sans', fontSize: 13, fontWeight: 300, color: '#cc5500' }}>
-                      Erro ao enviar. Tente novamente ou nos chame no WhatsApp.
+                      ✓ WhatsApp aberto com sua mensagem. Aguarde nosso retorno!
                     </p>
                   </div>
                 )}

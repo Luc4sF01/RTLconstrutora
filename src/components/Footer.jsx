@@ -1,5 +1,5 @@
 ﻿import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Linkedin, MessageCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { COMPANY, SERVICES } from '../data/content';
 
 export default function Footer() {
@@ -12,18 +12,11 @@ export default function Footer() {
             <p className="font-dm font-light text-[12px] text-white/30 tracking-widest uppercase mt-0.5 mb-4">Construção de Edifícios</p>
             <p className="font-dm font-light text-[15px] text-white/40 leading-relaxed">{COMPANY.slogan}</p>
             <div className="flex gap-3 mt-6">
-              {[
-                { Icon: Instagram, href: COMPANY.social.instagram },
-                { Icon: Facebook, href: COMPANY.social.facebook },
-                { Icon: Linkedin, href: COMPANY.social.linkedin },
-                { Icon: MessageCircle, href: `https://wa.me/${COMPANY.whatsapp}` },
-              ].map(({ Icon, href }, i) => (
-                <a key={i} href={href} target="_blank" rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-sm flex items-center justify-center group transition-all duration-300"
-                  style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
-                  <Icon size={14} className="text-white/35 group-hover:text-[#cc5500] transition-colors" />
-                </a>
-              ))}
+              <a href={`https://wa.me/${COMPANY.whatsapp}`} target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-sm flex items-center justify-center group transition-all duration-300"
+                style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+                <MessageCircle size={14} className="text-white/35 group-hover:text-[#cc5500] transition-colors" />
+              </a>
             </div>
           </div>
 
@@ -56,7 +49,6 @@ export default function Footer() {
                 {COMPANY.address.street}<br />{COMPANY.address.neighborhood}<br />{COMPANY.address.city}
               </p>
               <a href={`tel:${COMPANY.phone}`} className="font-dm font-light text-[15px] text-white/35 hover:text-white/60 transition-colors block">{COMPANY.phone}</a>
-              <a href={`mailto:${COMPANY.email}`} className="font-dm font-light text-[15px] text-white/35 hover:text-white/60 transition-colors block">{COMPANY.email}</a>
             </div>
           </div>
         </div>
