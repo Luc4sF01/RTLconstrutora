@@ -33,12 +33,11 @@ export const IMAGES = {
 };
 
 // Estatísticas — valores conservadores e defensáveis
-// "Anos de experiência" refere-se ao acúmulo do time de engenheiros, não só da empresa
 export const STATS = [
   { value: 20,  prefix: '+', suffix: '',  label: 'Obras Concluídas' },
   { value: 100, prefix: '',  suffix: '%', label: 'Entregas no Prazo' },
-  { value: 15,  prefix: '+', suffix: '',  label: 'Anos de Experiência' },
-  { value: 2,   prefix: '',  suffix: '+', label: 'Anos no Mercado' },
+  { value: 3,   prefix: '+', suffix: '',  label: 'Anos de Experiência' },
+  { value: 3,   prefix: '',  suffix: '+', label: 'Anos no Mercado' },
 ];
 
 export const SERVICES = [
@@ -191,7 +190,7 @@ export const DIFFERENTIALS = [
     number: '03',
     icon: 'Cpu',
     title: 'Equipe Técnica Qualificada',
-    description: 'Engenheiros civis e mestres de obra com registro CREA ativo, ART/RRT emitidas para cada obra, e mais de 15 anos de experiência acumulada no setor.',
+    description: 'Engenheiros civis e mestres de obra com registro CREA ativo, ART/RRT emitidas para cada obra, e mais de 3 anos de experiência no setor.',
   },
   {
     number: '04',

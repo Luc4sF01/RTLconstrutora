@@ -234,7 +234,7 @@ function GeometryCanvas() {
 
 // ─── Timeline Item ────────────────────────────────────────────────────────────
 const TIMELINE = [
-  { year: '2023', title: 'Fundação da RTL', desc: 'Empresa fundada em Fevereiro de 2023 por profissionais com mais de 15 anos de experiência no setor da construção civil.' },
+  { year: '2023', title: 'Fundação da RTL', desc: 'Empresa fundada em Fevereiro de 2023 com foco em excelência técnica e compromisso com prazos no setor da construção civil.' },
   { year: '2023', title: 'Primeiros Contratos', desc: 'Entrega dos primeiros contratos — reforma escolar e obras de infraestrutura — com início de atuação em licitações municipais da região.' },
   { year: '2024', title: 'Expansão Regional', desc: 'Ampliação para cidades da região: Mirassol, Bady Bassitt, Cedral e outras municipalidades. Início de obras de infraestrutura viária.' },
   { year: '2025', title: 'Referência em Obras Públicas', desc: 'Com mais de 20 obras entregues, a RTL consolida-se como referência em qualidade técnica, cumprimento de prazos e transparência contratual.' },
@@ -282,7 +282,7 @@ const VALUES = [
 const CAPABILITIES = [
   { Icon: Award, label: 'Certificada', desc: 'CREA ativo, ART/RRT emitidas em cada obra, NR-18 e PCMAT em conformidade.' },
   { Icon: Shield, label: 'Habilitada', desc: 'Certidões em dia para licitações municipais, estaduais e federais.' },
-  { Icon: Users, label: 'Equipe Sênior', desc: 'Engenheiros e mestres de obra com mais de 15 anos de experiência acumulada.' },
+  { Icon: Users, label: 'Equipe Sênior', desc: 'Engenheiros e mestres de obra com registro CREA ativo e experiência comprovada em obras públicas e privadas.' },
   { Icon: MapPin, label: 'Nacional', desc: 'Atendemos prefeituras, órgãos estaduais e federais e clientes privados em todo o Brasil.' },
 ];
 
@@ -412,7 +412,7 @@ export default function AboutPage() {
                   A RTL Construção de Edifícios Ltda nasceu em {COMPANY.founded} com uma missão clara: entregar obras com excelência técnica, dentro do prazo e com total transparência.
                 </p>
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'rgba(10,10,10,0.55)', fontWeight: 300, lineHeight: 1.75 }}>
-                  Fundada por engenheiros e gestores com mais de 15 anos de experiência, a empresa se estabeleceu rapidamente como referência em qualidade e confiança em todo o território nacional.
+                  Desde sua fundação, a empresa se estabeleceu rapidamente como referência em qualidade e confiança em todo o território nacional.
                 </p>
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'rgba(10,10,10,0.55)', fontWeight: 300, lineHeight: 1.75 }}>
                   Atuamos em obras públicas e privadas — da licitação governamental à edificação residencial — sempre priorizando segurança, técnica e satisfação do cliente.

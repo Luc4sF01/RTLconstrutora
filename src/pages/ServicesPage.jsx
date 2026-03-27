@@ -156,7 +156,7 @@ export default function ServicesPage() {
               {[
                 { value: '30+', label: 'Obras entregues' },
                 { value: '100%', label: 'Com ART emitida' },
-                { value: '15+', label: 'Anos de experiência' },
+                { value: '3+', label: 'Anos de experiência' },
                 { value: '6', label: 'Frentes de serviço' },
               ].map(({ value, label }) => (
                 <div key={label} style={{ background: '#fff', padding: 'clamp(28px,4vw,48px) clamp(20px,3vw,36px)' }}>
